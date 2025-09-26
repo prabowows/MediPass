@@ -5,6 +5,9 @@ import {
   Hospital,
   QrCode,
   Bell,
+  Activity,
+  Pill,
+  ShieldAlert,
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -42,10 +45,21 @@ const features = [
   },
 ];
 
+const IconCard = ({ icon, label }: { icon: React.ReactNode, label: string }) => (
+  <Card className="absolute animate-fade-in-up backdrop-blur-sm bg-white/30">
+    <CardContent className="p-3">
+      <div className="flex flex-col items-center gap-2">
+        {icon}
+        <span className="text-xs font-semibold">{label}</span>
+      </div>
+    </CardContent>
+  </Card>
+);
+
 export default function Home() {
   return (
     <div className="flex flex-col">
-      <section className="w-full bg-background pt-16 md:pt-24 lg:pt-32">
+      <section className="w-full bg-slate-100 pt-16 md:pt-24 lg:pt-32">
         <div className="container mx-auto grid grid-cols-1 gap-12 px-4 md:grid-cols-2 md:px-6">
           <div className="flex flex-col justify-center space-y-6">
             <div className="space-y-4">
@@ -75,6 +89,15 @@ export default function Home() {
             </div>
           </div>
           <div className="relative flex h-[300px] w-full items-center justify-center md:h-[400px]">
+             <div className="absolute top-8 left-12">
+                <IconCard icon={<Activity className="w-6 h-6 text-blue-500" />} label="Conditions" />
+              </div>
+              <div className="absolute top-24 right-4">
+                <IconCard icon={<ShieldAlert className="w-6 h-6 text-red-500" />} label="Allergies" />
+              </div>
+              <div className="absolute bottom-16 left-2">
+                <IconCard icon={<Pill className="w-6 h-6 text-green-500" />} label="Medications" />
+              </div>
             <Hero3D />
           </div>
         </div>
