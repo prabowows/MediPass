@@ -1,3 +1,7 @@
+
+'use client';
+
+import { useState } from 'react';
 import type { Patient } from '@/lib/data';
 import {
   Card,
@@ -15,9 +19,9 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { Separator } from '@/components/ui/separator';
 import { format } from 'date-fns';
 import MedicalCalendar from './medical-calendar';
+import MedicalEventDetails from './medical-event-details';
 
 const InfoField = ({ label, value }: { label: string; value: string | undefined }) => (
     <div className="grid grid-cols-2 gap-2">
@@ -27,6 +31,8 @@ const InfoField = ({ label, value }: { label: string; value: string | undefined 
 );
 
 const MedicalResume = ({ patient }: { patient: Patient }) => {
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date(patient.consultationHistory[0].date));
+
   return (
     <div className="space-y-6">
       <Card>
@@ -49,8 +55,9 @@ const MedicalResume = ({ patient }: { patient: Patient }) => {
           <CardTitle className="font-headline text-2xl">Medical Timeline</CardTitle>
           <CardDescription>Click on a highlighted date to see event details.</CardDescription>
         </CardHeader>
-        <CardContent>
-            <MedicalCalendar patient={patient} />
+        <CardContent className="grid grid-cols-1 gap-8 md:grid-cols-2">
+            <MedicalCalendar patient={patient} selectedDate={selectedDate} onDateSelect={setSelectedDate} />
+            <MedicalEventDetails patient={patient} selectedDate={selectedDate} />
         </CardContent>
       </Card>
 
