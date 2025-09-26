@@ -27,11 +27,10 @@ const Header = () => {
   const { isLoggedIn, userType, logout } = useAuth();
 
   const getVisibleNavLinks = () => {
-    return navLinks.filter(link => {
-        if (!link.requiredAuth) return true;
-        if (isLoggedIn && link.userType === userType) return true;
-        return false;
-    });
+    if (isLoggedIn) {
+        return navLinks.filter(link => link.requiredAuth && link.userType === userType);
+    }
+    return navLinks.filter(link => !link.requiredAuth);
   };
 
   const visibleNavLinks = getVisibleNavLinks();
@@ -89,10 +88,15 @@ const Header = () => {
               </Button>
             </>
           ) : (
-            <Button variant="ghost" onClick={logout}>
-              <LogOut className="mr-2 h-4 w-4" />
-              Logout
-            </Button>
+             <div className="flex items-center gap-4">
+                <Link href="/" className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
+                    Home
+                </Link>
+                <Button variant="ghost" onClick={logout}>
+                  <LogOut className="mr-2 h-4 w-4" />
+                  Logout
+                </Button>
+            </div>
           )}
           <Sheet>
             <SheetTrigger asChild>
@@ -109,14 +113,19 @@ const Header = () => {
                 </Link>
                 {renderNavLinks(true)}
                  {isLoggedIn && (
-                  <Button variant="ghost" onClick={() => {
-                    logout();
-                    // We might need to manually close the sheet on mobile
-                    // Depending on SheetClose behavior
-                  }}>
-                    <LogOut className="mr-2 h-4 w-4" />
-                    Logout
-                  </Button>
+                  <>
+                    <SheetClose asChild>
+                      <Link href="/" className="block py-2 text-lg text-muted-foreground">Home</Link>
+                    </SheetClose>
+                    <Button variant="ghost" onClick={() => {
+                      logout();
+                      // We might need to manually close the sheet on mobile
+                      // Depending on SheetClose behavior
+                    }}>
+                      <LogOut className="mr-2 h-4 w-4" />
+                      Logout
+                    </Button>
+                  </>
                 )}
               </div>
             </SheetContent>
