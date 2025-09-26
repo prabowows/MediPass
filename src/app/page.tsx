@@ -78,8 +78,7 @@ export default function Home() {
             <Image 
               src="https://storage.googleapis.com/stabl-diffusion-images/434f669a-302a-4137-b956-62057d81b315.png"
               alt="3D Doctor Illustration"
-              width={400}
-              height={400}
+              fill
               className="object-contain"
               data-ai-hint="doctor illustration"
             />
