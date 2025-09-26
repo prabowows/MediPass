@@ -53,7 +53,7 @@ const MedicalResume = ({ patient }: { patient: Patient }) => {
       
       <Card>
         <CardHeader>
-          <CardTitle className="font-headline text-2xl">Medical Procedures</CardTitle>
+          <CardTitle className="font-headline text-2xl">Medical Procedures Timeline</CardTitle>
           <CardDescription>A calendar view of your past surgeries and vaccinations. Click a date for details.</CardDescription>
         </CardHeader>
         <CardContent className="grid grid-cols-1 gap-8 md:grid-cols-2">
