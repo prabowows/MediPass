@@ -5,61 +5,60 @@ import {
   Hospital,
   QrCode,
   Bell,
-  Activity,
-  Pill,
-  ShieldAlert,
+  Stethoscope,
+  BriefcaseMedical,
+  FlaskConical,
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from '@/components/ui/carousel';
 import Hero3D from '@/components/home/hero-3d';
 
 const features = [
   {
     icon: <HeartPulse className="h-8 w-8 text-primary" />,
     title: 'Comprehensive Medical Resume',
-    description: 'A single, unified view of your entire medical history, from conditions to consultations.',
-    image: PlaceHolderImages.find(img => img.id === 'feature-1'),
+    description:
+      'A single, unified view of your entire medical history, from conditions to consultations.',
   },
   {
     icon: <Bell className="h-8 w-8 text-primary" />,
     title: 'Personalized Notifications',
     description:
       'Receive AI-powered alerts for relevant health promotions, medication updates, and check-up reminders.',
-    image: PlaceHolderImages.find(img => img.id === 'feature-2'),
   },
   {
     icon: <QrCode className="h-8 w-8 text-primary" />,
     title: 'Instant QR Access',
     description:
       'Generate a secure QR code for hospitals to instantly access your medical resume in emergencies.',
-    image: PlaceHolderImages.find(img => img.id === 'feature-3'),
   },
   {
     icon: <Hospital className="h-8 w-8 text-primary" />,
     title: 'Seamless Hospital Integration',
     description:
       'Hospitals can scan your QR code to get up-to-date information, ensuring faster and safer care.',
-    image: PlaceHolderImages.find(img => img.id === 'feature-4'),
   },
 ];
 
-const IconCard = ({ icon, label }: { icon: React.ReactNode, label: string }) => (
-  <Card className="absolute animate-fade-in-up backdrop-blur-sm bg-white/30">
-    <CardContent className="p-3">
-      <div className="flex flex-col items-center gap-2">
-        {icon}
-        <span className="text-xs font-semibold">{label}</span>
-      </div>
-    </CardContent>
-  </Card>
-);
+const hospitalLogos = [
+  { name: 'Global Health', icon: <Stethoscope className="h-10 w-10" /> },
+  { name: 'Evergreen Hospital', icon: <BriefcaseMedical className="h-10 w-10" /> },
+  { name: 'City Central', icon: <Hospital className="h-10 w-10" /> },
+  { name: 'Wellness Clinic', icon: <HeartPulse className="h-10 w-10" /> },
+  { name: 'Innovate Labs', icon: <FlaskConical className="h-10 w-10" /> },
+  { name: 'General United', icon: <Stethoscope className="h-10 w-10" /> },
+];
 
 export default function Home() {
   return (
     <div className="flex flex-col">
-      <section className="w-full bg-background pt-16 md:pt-24 lg:pt-32">
+      <section className="w-full bg-slate-100 pt-16 md:pt-24 lg:pt-32">
         <div className="container mx-auto grid grid-cols-1 gap-12 px-4 md:grid-cols-2 md:px-6">
           <div className="flex flex-col justify-center space-y-6">
             <div className="space-y-4">
@@ -82,15 +81,46 @@ export default function Home() {
                 </Link>
               </Button>
               <Button asChild variant="secondary" size="lg">
-                <Link href="/login">
-                  Hospital Portal
-                </Link>
+                <Link href="/login">Hospital Portal</Link>
               </Button>
             </div>
           </div>
           <div className="relative flex h-[300px] w-full items-center justify-center md:h-[400px]">
             <Hero3D />
           </div>
+        </div>
+      </section>
+
+      <section className="w-full bg-background py-12 md:py-16">
+        <div className="container mx-auto">
+          <div className="text-center mb-8">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+              Trusted by Leading Healthcare Providers
+            </h3>
+          </div>
+          <Carousel
+            opts={{
+              align: 'start',
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent>
+              {hospitalLogos.map((logo, index) => (
+                <CarouselItem
+                  key={index}
+                  className="basis-1/3 md:basis-1/4 lg:basis-1/6"
+                >
+                  <div className="p-1">
+                    <div className="flex aspect-square flex-col items-center justify-center gap-2 rounded-lg bg-muted/50 p-6 text-muted-foreground">
+                      {logo.icon}
+                      <p className="text-xs text-center font-medium">{logo.name}</p>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
         </div>
       </section>
 
@@ -109,11 +139,16 @@ export default function Home() {
           </div>
           <div className="mx-auto grid items-start gap-8 sm:max-w-4xl sm:grid-cols-2 md:gap-12 lg:max-w-5xl lg:grid-cols-2">
             {features.map((feature) => (
-              <Card key={feature.title} className="h-full overflow-hidden transition-all hover:shadow-lg">
+              <Card
+                key={feature.title}
+                className="h-full overflow-hidden transition-all hover:shadow-lg"
+              >
                 <CardHeader className="flex flex-row items-start gap-4">
                   {feature.icon}
                   <div className="grid gap-1">
-                    <CardTitle className="font-headline text-xl">{feature.title}</CardTitle>
+                    <CardTitle className="font-headline text-xl">
+                      {feature.title}
+                    </CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent>
