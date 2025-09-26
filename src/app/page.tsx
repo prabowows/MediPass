@@ -59,7 +59,7 @@ const hospitalLogos = [
 export default function Home() {
   return (
     <div className="flex flex-col">
-      <section className="w-full bg-background pt-16 md:pt-24 lg:pt-32">
+      <section className="w-full bg-background pt-16 md:pt-20 lg:pt-24">
         <div className="container mx-auto grid grid-cols-1 gap-12 px-4 md:grid-cols-2 md:px-6">
           <div className="flex flex-col justify-center space-y-6">
             <div className="space-y-4">
@@ -92,7 +92,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="w-full bg-background py-12 md:py-16">
+      <section className="w-full bg-background py-12">
         <div className="container mx-auto">
           <div className="text-center mb-8">
             <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
@@ -125,7 +125,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="features" className="w-full py-12 md:py-24 lg:py-32">
+      <section id="features" className="w-full py-12 md:py-16 lg:py-20">
         <div className="container mx-auto space-y-12 px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
