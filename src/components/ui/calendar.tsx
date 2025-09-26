@@ -40,11 +40,11 @@ function Calendar({
         cell: "flex-1 h-9 text-center text-sm p-0 relative first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
         day: cn(
           buttonVariants({ variant: "ghost" }),
-          "h-9 w-9 p-0 font-normal aria-selected:opacity-100 rounded-md transition-colors"
+          "h-9 w-9 p-0 font-normal aria-selected:opacity-100 rounded-md transition-colors hover:bg-transparent hover:border hover:border-primary"
         ),
         day_range_end: "day-range-end",
         day_selected:
-          "bg-[#63a3b2] text-primary-foreground hover:bg-[#63a3b2] hover:text-primary-foreground focus:bg-[#63a3b2] focus:text-primary-foreground",
+          "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
         day_today: "relative bg-accent text-accent-foreground after:content-[''] after:absolute after:bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-1 after:h-1 after:rounded-full after:bg-primary",
         day_outside:
           "day-outside text-muted-foreground opacity-50 aria-selected:bg-accent/50 aria-selected:text-muted-foreground",
@@ -53,7 +53,7 @@ function Calendar({
           "aria-selected:bg-accent aria-selected:text-accent-foreground",
         day_hidden: "invisible",
         day_highlighted:
-          "relative after:content-[''] after:absolute after:top-1 after:left-1/2 after:-translate-x-1/2 after:w-1.5 after:h-1.5 after:rounded-full after:bg-[#63a3b2]",
+          "relative after:content-[''] after:absolute after:top-1 after:left-1/2 after:-translate-x-1/2 after:w-1.5 after:h-1.5 after:rounded-full after:bg-secondary",
         ...classNames,
       }}
       components={{
