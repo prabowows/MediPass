@@ -23,14 +23,6 @@ export default function MedicalCalendar({ patient, selectedDate, onDateSelect }:
 
   const medicalEvents = useMemo(() => {
     const events: MedicalEvent[] = [];
-    patient.consultationHistory.forEach(item =>
-      events.push({
-        date: parseISO(item.date),
-        type: 'Consultation',
-        title: item.reason,
-        details: item,
-      })
-    );
     patient.medicalHistory.surgeries.forEach(item =>
       events.push({
         date: parseISO(item.date),
