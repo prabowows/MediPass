@@ -80,7 +80,7 @@ export default function Home() {
                 Smart, Simple & Secure.
               </h1>
               <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                MediPassport intelligently organizes your complete medical records and provides personalized AI insights, all in a single, secure digital passport.
+                MediPass intelligently organizes your complete medical records and provides personalized AI insights, all in a single, secure digital passport.
               </p>
             </div>
             <div className="flex flex-col gap-4 min-[400px]:flex-row">
@@ -165,7 +165,7 @@ export default function Home() {
                 Smarter Healthcare for Everyone
               </h2>
               <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                MediPassport empowers both patients and healthcare providers with
+                MediPass empowers both patients and healthcare providers with
                 cutting-edge features designed for efficiency and peace of mind.
               </p>
             </div>

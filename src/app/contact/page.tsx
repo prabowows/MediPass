@@ -51,7 +51,7 @@ export default function ContactPage() {
                     <Mail className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
                     <div>
                         <h3 className="font-semibold text-foreground">Email Us</h3>
-                        <p>support@medipassport.com</p>
+                        <p>support@medipass.com</p>
                     </div>
                 </div>
                 <div className="flex items-start gap-4">

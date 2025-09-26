@@ -7,10 +7,10 @@ const Footer = () => {
       <div className="container mx-auto flex flex-col items-center justify-between gap-6 px-4 py-8 sm:flex-row md:px-6">
         <div className="flex items-center gap-2">
           <Logo className="h-6 w-6 text-primary" />
-          <p className="font-headline text-lg font-semibold">MediPassport</p>
+          <p className="font-headline text-lg font-semibold">MediPass</p>
         </div>
         <p className="text-sm text-muted-foreground">
-          © {new Date().getFullYear()} MediPassport. All rights reserved.
+          © {new Date().getFullYear()} MediPass. All rights reserved.
         </p>
         <nav className="flex gap-4 sm:gap-6">
           <Link

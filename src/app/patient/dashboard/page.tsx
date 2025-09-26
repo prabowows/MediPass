@@ -47,7 +47,7 @@ export default function PatientDashboard() {
           <TabsContent value="qr" className="mt-6">
             <Card>
               <CardHeader>
-                <CardTitle className="font-headline">Your MediPassport QR Code</CardTitle>
+                <CardTitle className="font-headline">Your MediPass QR Code</CardTitle>
                 <CardDescription>
                   Present this code at any registered hospital for instant access to your medical resume.
                 </CardDescription>

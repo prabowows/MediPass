@@ -7,7 +7,7 @@ import './globals.css';
 import { AuthProvider } from '@/contexts/auth-context';
 
 export const metadata: Metadata = {
-  title: 'MediPassport',
+  title: 'MediPass',
   description: 'Simplify and organize your medical records.',
 };
 

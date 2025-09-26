@@ -18,7 +18,7 @@ export default function HospitalDashboard() {
             Hospital Portal
           </h1>
           <p className="text-muted-foreground">
-            Scan a patient&apos;s MediPassport or view recent patient records.
+            Scan a patient&apos;s MediPass or view recent patient records.
           </p>
         </div>
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">

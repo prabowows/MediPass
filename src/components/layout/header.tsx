@@ -72,7 +72,7 @@ const Header = () => {
       <div className="container flex h-16 items-center">
         <Link href="/" className="mr-8 flex items-center space-x-2">
           <Logo className="h-6 w-6 text-primary" />
-          <span className="font-headline font-bold">MediPassport</span>
+          <span className="font-headline font-bold">MediPass</span>
         </Link>
         <nav className="hidden items-center space-x-6 md:flex">
           {renderNavLinks()}
@@ -106,7 +106,7 @@ const Header = () => {
               <div className="grid gap-4 py-6">
                 <Link href="/" className="mb-4 flex items-center space-x-2">
                   <Logo className="h-6 w-6 text-primary" />
-                  <span className="font-headline font-bold">MediPassport</span>
+                  <span className="font-headline font-bold">MediPass</span>
                 </Link>
                 {renderNavLinks(true)}
                  {isLoggedIn && (
