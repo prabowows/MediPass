@@ -80,9 +80,7 @@ export default function Home() {
                 Smart, Simplified & Secure.
               </h1>
               <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                MediPassport intelligently organizes your complete medical records into a
-                single, secure digital passport. Share your history instantly
-                with any hospital, anytime.
+                MediPassport intelligently organizes your complete medical records and provides personalized AI insights, all in a single, secure digital passport. Share your history instantly with any hospital, anytime.
               </p>
             </div>
             <div className="flex flex-col gap-4 min-[400px]:flex-row">
