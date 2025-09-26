@@ -51,7 +51,7 @@ function Calendar({
         day_range_middle:
           "aria-selected:bg-accent aria-selected:text-accent-foreground",
         day_hidden: "invisible",
-        day_highlighted: "relative before:content-[''] before:absolute before:top-1 before:left-1/2 before:-translate-x-1/2 before:w-1 before:h-1 before:rounded-full before:bg-secondary",
+        day_highlighted: "relative before:content-[''] before:absolute before:top-1 before:left-1/2 before:-translate-x-1/2 before:w-1 before:h-1 before:rounded-full before:bg-[#63a3b2]",
         ...classNames,
       }}
       components={{
