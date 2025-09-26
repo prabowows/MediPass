@@ -48,10 +48,10 @@ const Hero3D = () => {
 
     // Load Model
     const loader = new GLTFLoader();
-    // Reverted to a placeholder model path
-    loader.load('https://placehold.co/customer-service.glb', (gltf) => {
+    // Using a reliable public source for a GLB model
+    loader.load('https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Humanoid/glTF-Binary/Humanoid.glb', (gltf) => {
         const model = gltf.scene;
-        model.scale.set(1.2, 1.2, 1.2);
+        model.scale.set(0.8, 0.8, 0.8);
         model.position.y = 0;
         model.traverse((child) => {
             if ((child as THREE.Mesh).isMesh) {
