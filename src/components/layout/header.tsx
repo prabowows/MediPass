@@ -16,18 +16,28 @@ import { usePathname } from 'next/navigation';
 import { useAuth } from '@/contexts/auth-context';
 
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/patient/dashboard', label: 'Patient Dashboard' },
-  { href: '/hospital/dashboard', label: 'Hospital Dashboard' },
-  { href: '/contact', label: 'Contact Us' },
+  { href: '/', label: 'Home', requiredAuth: false },
+  { href: '/patient/dashboard', label: 'Patient Dashboard', requiredAuth: true, userType: 'Patient' },
+  { href: '/hospital/dashboard', label: 'Hospital Dashboard', requiredAuth: true, userType: 'Hospital' },
+  { href: '/contact', label: 'Contact Us', requiredAuth: false },
 ];
 
 const Header = () => {
   const pathname = usePathname();
-  const { isLoggedIn, logout } = useAuth();
+  const { isLoggedIn, userType, logout } = useAuth();
+
+  const getVisibleNavLinks = () => {
+    return navLinks.filter(link => {
+        if (!link.requiredAuth) return true;
+        if (isLoggedIn && link.userType === userType) return true;
+        return false;
+    });
+  };
+
+  const visibleNavLinks = getVisibleNavLinks();
 
   const renderNavLinks = (isMobile = false) =>
-    navLinks.map((link) => {
+    visibleNavLinks.map((link) => {
       const isActive = pathname === link.href;
       
       const linkEl = (
@@ -50,12 +60,12 @@ const Header = () => {
           </SheetClose>
         );
       }
-
       return (
         <div key={link.href}>
           {linkEl}
         </div>
       );
+
     });
 
   return (

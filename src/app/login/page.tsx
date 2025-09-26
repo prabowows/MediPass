@@ -15,7 +15,6 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { User, Hospital } from 'lucide-react';
 import { useAuth } from '@/contexts/auth-context';
-import { useRouter } from 'next/navigation';
 
 const LoginForm = ({ userType }: { userType: 'Patient' | 'Hospital' }) => (
   <CardContent className="space-y-4">
@@ -37,12 +36,10 @@ const LoginForm = ({ userType }: { userType: 'Patient' | 'Hospital' }) => (
 
 export default function LoginPage() {
   const { login } = useAuth();
-  const router = useRouter();
 
-  const handleLogin = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+  const handleLogin = (e: React.MouseEvent<HTMLButtonElement>, userType: 'Patient' | 'Hospital', path: string) => {
     e.preventDefault();
-    login();
-    router.push(path);
+    login(userType, path);
   }
 
   return (
@@ -68,9 +65,7 @@ export default function LoginPage() {
             </CardHeader>
             <LoginForm userType="Patient" />
             <CardFooter className="flex-col gap-4">
-              <Button className="w-full" asChild>
-                <Link href="/patient/dashboard" onClick={(e) => handleLogin(e, '/patient/dashboard')}>Login</Link>
-              </Button>
+              <Button className="w-full" onClick={(e) => handleLogin(e, 'Patient', '/patient/dashboard')}>Login</Button>
               <div className="text-center text-sm">
                 Don&apos;t have an account?{' '}
                 <Link href="/register" className="underline">
@@ -90,9 +85,7 @@ export default function LoginPage() {
             </CardHeader>
             <LoginForm userType="Hospital" />
             <CardFooter className="flex-col gap-4">
-              <Button className="w-full" asChild>
-                <Link href="/hospital/dashboard" onClick={(e) => handleLogin(e, '/hospital/dashboard')}>Login</Link>
-              </Button>
+              <Button className="w-full" onClick={(e) => handleLogin(e, 'Hospital', '/hospital/dashboard')}>Login</Button>
               <div className="text-center text-sm">
                 Need to register your hospital?{' '}
                 <Link href="/register" className="underline">
