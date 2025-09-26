@@ -64,17 +64,20 @@ const PersonalizedNotifications = () => {
 
   return (
     <div className="space-y-6">
-      <div className="rounded-lg border bg-card shadow-lg transition-all hover:shadow-xl">
+      <div 
+        className="rounded-lg shadow-lg transition-all hover:shadow-xl text-white"
+        style={{ backgroundColor: '#2596be' }}
+      >
         <div className="p-6">
           <div className="flex items-start gap-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full" style={{ backgroundColor: '#2596be1A' }}>
-              <BrainCircuit className="h-6 w-6" style={{ color: '#2596be' }}/>
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20">
+              <BrainCircuit className="h-6 w-6 text-white"/>
             </div>
             <div className="flex-1">
-              <h3 className="font-headline text-lg font-semibold text-foreground">
+              <h3 className="font-headline text-lg font-semibold">
                 Curated For You
               </h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-white/80">
                 Our AI has analyzed your health data to provide these exclusive
                 insights.
               </p>
@@ -88,22 +91,22 @@ const PersonalizedNotifications = () => {
           defaultValue="item-1"
           className="w-full px-6 pb-4"
         >
-          <AccordionItem value="item-1" className="border-t">
-            <AccordionTrigger className="text-base font-semibold" style={{ color: '#2596be' }}>
+          <AccordionItem value="item-1" className="border-t border-white/30">
+            <AccordionTrigger className="text-base font-semibold text-white hover:no-underline">
               Relevant Insights
             </AccordionTrigger>
             <AccordionContent>
-              <p className="whitespace-pre-line text-sm text-muted-foreground">
+              <p className="whitespace-pre-line text-sm text-white/80">
                 {notifications.relevantNotifications}
               </p>
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="item-2" className="border-b-0">
-            <AccordionTrigger className="text-base font-semibold" style={{ color: '#2596be' }}>
+          <AccordionItem value="item-2" className="border-b-0 border-white/30">
+            <AccordionTrigger className="text-base font-semibold text-white hover:no-underline">
               Analyst&apos;s Reasoning
             </AccordionTrigger>
             <AccordionContent>
-              <p className="whitespace-pre-line text-sm text-muted-foreground">
+              <p className="whitespace-pre-line text-sm text-white/80">
                 {notifications.reasoning}
               </p>
             </AccordionContent>
