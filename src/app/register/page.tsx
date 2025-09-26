@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useState } from 'react';
 import {
   Card,
   CardContent,
@@ -13,7 +14,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { User, Hospital } from 'lucide-react';
+import { User, Hospital, Loader2 } from 'lucide-react';
 import { useAuth } from '@/contexts/auth-context';
 
 const RegisterForm = ({ userType }: { userType: 'Patient' | 'Hospital' }) => (
@@ -40,9 +41,16 @@ const RegisterForm = ({ userType }: { userType: 'Patient' | 'Hospital' }) => (
 
 export default function RegisterPage() {
   const { login } = useAuth();
+  const [isPatientLoading, setIsPatientLoading] = useState(false);
+  const [isHospitalLoading, setIsHospitalLoading] = useState(false);
 
-  const handleRegister = (userType: 'Patient' | 'Hospital', path: string) => {
-    login(userType, path);
+  const handleRegister = async (userType: 'Patient' | 'Hospital', path: string) => {
+    if (userType === 'Patient') {
+      setIsPatientLoading(true);
+    } else {
+      setIsHospitalLoading(true);
+    }
+    await login(userType, path);
   }
 
   return (
@@ -68,7 +76,10 @@ export default function RegisterPage() {
             </CardHeader>
             <RegisterForm userType="Patient" />
             <CardFooter className="flex-col gap-4">
-              <Button className="w-full" onClick={() => handleRegister('Patient', '/patient/dashboard')}>Create Account</Button>
+              <Button className="w-full" onClick={() => handleRegister('Patient', '/patient/dashboard')} disabled={isPatientLoading}>
+                 {isPatientLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                Create Account
+              </Button>
               <div className="text-center text-sm">
                 Already have an account?{' '}
                 <Link href="/login" className="underline">
@@ -88,7 +99,10 @@ export default function RegisterPage() {
             </CardHeader>
             <RegisterForm userType="Hospital" />
             <CardFooter className="flex-col gap-4">
-              <Button className="w-full" onClick={() => handleRegister('Hospital', '/hospital/dashboard')}>Register Hospital</Button>
+              <Button className="w-full" onClick={() => handleRegister('Hospital', '/hospital/dashboard')} disabled={isHospitalLoading}>
+                {isHospitalLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                Register Hospital
+                </Button>
               <div className="text-center text-sm">
                 Already registered?{' '}
                 <Link href="/login" className="underline">

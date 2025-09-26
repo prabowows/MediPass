@@ -8,11 +8,15 @@ type UserType = 'Patient' | 'Hospital' | null;
 interface AuthContextType {
   isLoggedIn: boolean;
   userType: UserType;
-  login: (userType: UserType, path: string) => void;
+  login: (userType: UserType, path: string) => Promise<void>;
   logout: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
+
+// Helper function to simulate a network request
+const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -28,7 +32,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setLoading(false);
   }, []);
 
-  const login = (userType: UserType, path: string) => {
+  const login = async (userType: UserType, path: string) => {
+    // Simulate network delay
+    await sleep(1000);
+
     localStorage.setItem('isLoggedIn', 'true');
     localStorage.setItem('userType', userType || '');
     setIsLoggedIn(true);

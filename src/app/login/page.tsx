@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useState } from 'react';
 import {
   Card,
   CardContent,
@@ -13,7 +14,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { User, Hospital } from 'lucide-react';
+import { User, Hospital, Loader2 } from 'lucide-react';
 import { useAuth } from '@/contexts/auth-context';
 
 const LoginForm = ({ userType }: { userType: 'Patient' | 'Hospital' }) => (
@@ -36,10 +37,19 @@ const LoginForm = ({ userType }: { userType: 'Patient' | 'Hospital' }) => (
 
 export default function LoginPage() {
   const { login } = useAuth();
+  const [isPatientLoading, setIsPatientLoading] = useState(false);
+  const [isHospitalLoading, setIsHospitalLoading] = useState(false);
 
-  const handleLogin = (e: React.MouseEvent<HTMLButtonElement>, userType: 'Patient' | 'Hospital', path: string) => {
+  const handleLogin = async (e: React.MouseEvent<HTMLButtonElement>, userType: 'Patient' | 'Hospital', path: string) => {
     e.preventDefault();
-    login(userType, path);
+    if (userType === 'Patient') {
+      setIsPatientLoading(true);
+    } else {
+      setIsHospitalLoading(true);
+    }
+    
+    await login(userType, path);
+    // No need to set loading to false as we will be redirected.
   }
 
   return (
@@ -65,7 +75,10 @@ export default function LoginPage() {
             </CardHeader>
             <LoginForm userType="Patient" />
             <CardFooter className="flex-col gap-4">
-              <Button className="w-full" onClick={(e) => handleLogin(e, 'Patient', '/patient/dashboard')}>Login</Button>
+              <Button className="w-full" onClick={(e) => handleLogin(e, 'Patient', '/patient/dashboard')} disabled={isPatientLoading}>
+                 {isPatientLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                Login
+              </Button>
               <div className="text-center text-sm">
                 Don&apos;t have an account?{' '}
                 <Link href="/register" className="underline">
@@ -85,7 +98,10 @@ export default function LoginPage() {
             </CardHeader>
             <LoginForm userType="Hospital" />
             <CardFooter className="flex-col gap-4">
-              <Button className="w-full" onClick={(e) => handleLogin(e, 'Hospital', '/hospital/dashboard')}>Login</Button>
+              <Button className="w-full" onClick={(e) => handleLogin(e, 'Hospital', '/hospital/dashboard')} disabled={isHospitalLoading}>
+                {isHospitalLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                Login
+              </Button>
               <div className="text-center text-sm">
                 Need to register your hospital?{' '}
                 <Link href="/register" className="underline">
