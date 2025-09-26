@@ -60,9 +60,9 @@ export default function PatientDashboard() {
           <TabsContent value="notifications" className="mt-6">
              <Card>
               <CardHeader>
-                <CardTitle className="font-headline">Personalized For You</CardTitle>
+                <CardTitle className="font-headline">Your Personal Health Analyst</CardTitle>
                 <CardDescription>
-                  Here are some updates and promotions relevant to your health profile, powered by AI.
+                  Exclusive insights curated by our AI based on your health profile.
                 </CardDescription>
               </CardHeader>
               <CardContent>

@@ -4,7 +4,13 @@ import {
   hospitalPromotions,
   medicationUpdates,
 } from '@/lib/data';
-import { AlertCircle, Info } from 'lucide-react';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
+import { BrainCircuit, Info } from 'lucide-react';
 
 export default async function PersonalizedNotifications() {
   const notifications = await personalizedNotifications({
@@ -15,28 +21,45 @@ export default async function PersonalizedNotifications() {
 
   return (
     <div className="space-y-6">
-      <div className="rounded-lg border border-blue-300 bg-blue-50 p-4">
-        <div className="flex">
-          <div className="flex-shrink-0">
-            <Info className="h-5 w-5 text-blue-400" aria-hidden="true" />
-          </div>
-          <div className="ml-3 flex-1 md:flex md:justify-between">
-            <p className="text-sm text-blue-700">{notifications.relevantNotifications}</p>
-          </div>
-        </div>
-      </div>
-      <div className="rounded-lg border border-amber-300 bg-amber-50 p-4">
-        <div className="flex">
-          <div className="flex-shrink-0">
-            <AlertCircle className="h-5 w-5 text-amber-400" aria-hidden="true" />
-          </div>
-          <div className="ml-3">
-            <h3 className="text-sm font-medium text-amber-800">AI-Powered Reasoning</h3>
-            <div className="mt-2 text-sm text-amber-700">
-              <p>{notifications.reasoning}</p>
+      <div className="rounded-lg border bg-card shadow-lg transition-all hover:shadow-xl">
+        <div className="p-6">
+          <div className="flex items-start gap-4">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+              <BrainCircuit className="h-6 w-6 text-primary" />
+            </div>
+            <div className="flex-1">
+              <h3 className="font-headline text-lg font-semibold text-foreground">
+                Curated For You
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                Our AI has analyzed your health data to provide these exclusive insights.
+              </p>
             </div>
           </div>
         </div>
+
+        <Accordion type="single" collapsible defaultValue="item-1" className="w-full px-6 pb-4">
+          <AccordionItem value="item-1" className="border-t">
+            <AccordionTrigger className="text-base font-semibold text-primary">
+              Relevant Insights
+            </AccordionTrigger>
+            <AccordionContent>
+              <p className="whitespace-pre-line text-sm text-muted-foreground">
+                {notifications.relevantNotifications}
+              </p>
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-2" className="border-b-0">
+            <AccordionTrigger className="text-base font-semibold text-primary">
+              Analyst's Reasoning
+            </AccordionTrigger>
+            <AccordionContent>
+                <p className="whitespace-pre-line text-sm text-muted-foreground">
+                    {notifications.reasoning}
+                </p>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
       </div>
     </div>
   );
