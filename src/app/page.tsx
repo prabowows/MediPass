@@ -89,15 +89,6 @@ export default function Home() {
             </div>
           </div>
           <div className="relative flex h-[300px] w-full items-center justify-center md:h-[400px]">
-             <div className="absolute top-8 left-12">
-                <IconCard icon={<Activity className="w-6 h-6 text-blue-500" />} label="Conditions" />
-              </div>
-              <div className="absolute top-24 right-4">
-                <IconCard icon={<ShieldAlert className="w-6 h-6 text-red-500" />} label="Allergies" />
-              </div>
-              <div className="absolute bottom-16 left-2">
-                <IconCard icon={<Pill className="w-6 h-6 text-green-500" />} label="Medications" />
-              </div>
             <Hero3D />
           </div>
         </div>
