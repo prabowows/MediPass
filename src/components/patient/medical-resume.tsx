@@ -73,7 +73,7 @@ const MedicalResume = ({ patient }: { patient: Patient }) => {
             <div>
                 <h3 className="text-lg font-semibold mb-2">Allergies</h3>
                 <div className="flex flex-wrap gap-2">
-                    {patient.medicalHistory.allergies.map(allergy => <Badge key={allergy} variant="destructive">{allergy}</Badge>)}
+                    {patient.medicalHistory.allergies.map(allergy => <Badge key={allergy} variant="default">{allergy}</Badge>)}
                 </div>
             </div>
 
