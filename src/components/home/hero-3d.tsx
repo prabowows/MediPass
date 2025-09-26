@@ -62,6 +62,7 @@ const Hero3D = () => {
 
     // Handle Resize
     const handleResize = () => {
+      if (!currentMount) return;
       camera.aspect = currentMount.clientWidth / currentMount.clientHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(currentMount.clientWidth, currentMount.clientHeight);
@@ -72,7 +73,7 @@ const Hero3D = () => {
     // Cleanup
     return () => {
       window.removeEventListener('resize', handleResize);
-      if (renderer.domElement.parentNode === currentMount) {
+      if (currentMount && renderer.domElement.parentNode === currentMount) {
         currentMount.removeChild(renderer.domElement);
       }
     };
