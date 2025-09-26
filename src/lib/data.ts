@@ -74,17 +74,25 @@ export const mainPatient: Patient = {
         ]
       },
       { name: 'Asthma', diagnosed: '2005-09-10' },
+      { name: 'Gastroesophageal Reflux Disease (GERD)', diagnosed: '2018-05-20' },
     ],
-    surgeries: [{ name: 'Appendectomy', date: '2012-03-20' }],
+    surgeries: [
+        { name: 'Appendectomy', date: '2012-03-20' },
+        { name: 'Knee Arthroscopy', date: '2019-11-05' }
+    ],
     medications: [
       { name: 'Lisinopril', dosage: '10mg', frequency: 'Once daily' },
       { name: 'Metformin', dosage: '500mg', frequency: 'Twice daily' },
       { name: 'Albuterol Inhaler', dosage: 'As needed', frequency: 'For asthma attacks' },
+      { name: 'Omeprazole', dosage: '20mg', frequency: 'Once daily' },
+      { name: 'Ibuprofen', dosage: '200mg', frequency: 'As needed for pain' },
     ],
-    allergies: ['Penicillin', 'Peanuts'],
+    allergies: ['Penicillin', 'Peanuts', 'Dust Mites', 'Shellfish'],
     vaccinations: [
       { name: 'COVID-19 (Pfizer)', date: '2023-11-10' },
       { name: 'Flu Shot', date: '2023-10-05' },
+      { name: 'Tetanus (Tdap)', date: '2021-08-15' },
+      { name: 'Hepatitis B', date: '2003-06-01' },
     ],
   },
   consultationHistory: [
@@ -100,7 +108,21 @@ export const mainPatient: Patient = {
       doctor: 'Dr. Ben Adams',
       hospital: 'Central Clinic',
       reason: 'Asthma follow-up',
-      notes: 'Prescribed a new controller inhaler.',
+      notes: 'Prescribed a new controller inhaler. Patient reports improved breathing.',
+    },
+     {
+      date: '2023-05-10',
+      doctor: 'Dr. Sarah Lee',
+      hospital: 'Springfield General',
+      reason: 'Gastroenterology Consultation',
+      notes: 'Discussed management of GERD symptoms. Advised lifestyle changes and continuing Omeprazole.',
+    },
+    {
+      date: '2022-11-22',
+      doctor: 'Dr. Michael Chen',
+      hospital: 'OrthoCare Hospital',
+      reason: 'Post-Op Knee Follow-up',
+      notes: 'Patient shows good recovery from arthroscopy. Recommended physical therapy.',
     },
   ],
 };
@@ -140,6 +162,20 @@ export const hospitalPatientHistory = [
         name: 'Maria Garcia',
         lastVisit: '2024-01-10',
         reason: 'Flu-like symptoms',
+        status: 'Discharged'
+    },
+    {
+        id: 'pat-24680',
+        name: 'David Wilson',
+        lastVisit: '2023-12-05',
+        reason: 'Minor Surgery',
+        status: 'Discharged'
+    },
+    {
+        id: 'pat-97531',
+        name: 'Linda Johnson',
+        lastVisit: '2023-11-18',
+        reason: 'Allergy Testing',
         status: 'Discharged'
     },
 ];
