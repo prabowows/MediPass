@@ -101,12 +101,12 @@ export const mainPatient: Patient = {
     ],
   },
   consultationHistory: [
-     {
+    {
       date: '2024-04-02',
-      doctor: 'Dr. Emily Carter',
-      hospital: 'Springfield General',
-      reason: 'Vaccination Appointment',
-      notes: 'Administered Shingles vaccine.',
+      doctor: 'Dr. Ben Adams',
+      hospital: 'Central Clinic',
+      reason: 'Asthma Diagnosis',
+      notes: 'Patient diagnosed with Asthma after presenting with shortness of breath and wheezing. Prescribed Albuterol Inhaler.',
     },
     {
       date: '2024-03-15',
@@ -226,4 +226,5 @@ export const hospitalPatientHistory = [
         status: 'Active',
     },
 ];
+
 
