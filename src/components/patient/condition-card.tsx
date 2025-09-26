@@ -2,7 +2,7 @@
 
 import type { Condition } from '@/lib/data';
 import { format, parseISO } from 'date-fns';
-import { TrendingDown, TrendingUp } from 'lucide-react';
+import { TrendingDown, TrendingUp, ChevronDown } from 'lucide-react';
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { ChartContainer, ChartTooltipContent, ChartConfig } from '@/components/ui/chart';
@@ -122,21 +122,23 @@ const ConditionCard = ({ condition }: ConditionCardProps) => {
                         </div>
                     )}
                 </CardContent>
-                <CardFooter className='flex-col items-start'>
-                    {chartData && (
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                            {trend === 'down' ? <TrendingDown className="h-4 w-4 text-green-500" /> : <TrendingUp className="h-4 w-4 text-red-500" />}
-                            <p>
-                                <span className={`font-medium ${trend === 'down' ? 'text-green-500' : 'text-red-500'}`}>
-                                    {trend === 'down' ? 'Decreased' : 'Increased'} by {change} {unit}
-                                </span>
-                                {' '}in last 6 months.
-                            </p>
-                        </div>
-                    )}
-                    <AccordionTrigger className='w-full pt-2 pb-0 text-sm hover:no-underline justify-start gap-1'>
-                        View More Details
-                    </AccordionTrigger>
+                <CardFooter>
+                    <div className="w-full">
+                        {chartData && (
+                            <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+                                {trend === 'down' ? <TrendingDown className="h-4 w-4 text-green-500" /> : <TrendingUp className="h-4 w-4 text-red-500" />}
+                                <p>
+                                    <span className={`font-medium ${trend === 'down' ? 'text-green-500' : 'text-red-500'}`}>
+                                        {trend === 'down' ? 'Decreased' : 'Increased'} by {change} {unit}
+                                    </span>
+                                    {' '}in last 6 months.
+                                </p>
+                            </div>
+                        )}
+                        <AccordionTrigger className='p-0 text-sm hover:no-underline justify-start gap-1'>
+                            View More Details
+                        </AccordionTrigger>
+                    </div>
                 </CardFooter>
                  <AccordionContent>
                     <div className="bg-muted/50 p-6 text-sm">
