@@ -89,9 +89,6 @@ const Header = () => {
             </>
           ) : (
              <div className="flex items-center gap-4">
-                <Link href="/" className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
-                    Home
-                </Link>
                 <Button variant="ghost" onClick={logout}>
                   <LogOut className="mr-2 h-4 w-4" />
                   Logout
@@ -114,9 +111,6 @@ const Header = () => {
                 {renderNavLinks(true)}
                  {isLoggedIn && (
                   <>
-                    <SheetClose asChild>
-                      <Link href="/" className="block py-2 text-lg text-muted-foreground">Home</Link>
-                    </SheetClose>
                     <Button variant="ghost" onClick={() => {
                       logout();
                       // We might need to manually close the sheet on mobile
