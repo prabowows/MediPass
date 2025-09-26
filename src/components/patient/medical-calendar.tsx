@@ -45,12 +45,9 @@ export default function MedicalCalendar({ patient, selectedDate, onDateSelect }:
   const highlightedDays = medicalEvents.map(event => event.date);
 
   const handleDayClick = (day: Date) => {
-    const eventsOnDay = medicalEvents.some(event => isSameDay(event.date, day));
-    if (eventsOnDay) {
-      onDateSelect(day);
-    } else {
-        onDateSelect(undefined);
-    }
+    // Always update the selected date to the one that was clicked.
+    // This ensures the calendar selection state is always in sync with user interaction.
+    onDateSelect(day);
   };
 
   return (
