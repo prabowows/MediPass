@@ -8,7 +8,7 @@ import { parseISO, isSameDay } from 'date-fns';
 
 type MedicalEvent = {
   date: Date;
-  type: 'Consultation' | 'Surgery' | 'Vaccination';
+  type: 'Surgery' | 'Vaccination';
   title: string;
   details: any;
 };
