@@ -29,9 +29,9 @@ const Hero3D = () => {
     currentMount.appendChild(renderer.domElement);
 
     // Lighting
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 2.5); // Increased intensity
     scene.add(ambientLight);
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1.8); // Increased intensity
     directionalLight.position.set(5, 10, 7.5);
     scene.add(directionalLight);
 
@@ -41,7 +41,7 @@ const Hero3D = () => {
       'https://firebasestorage.googleapis.com/v0/b/genkit-llm-tools.appspot.com/o/dna.glb?alt=media&token=c83a7c37-9c98-410a-993d-36828236a282',
       (gltf) => {
         const model = gltf.scene;
-        model.scale.set(1.2, 1.2, 1.2);
+        model.scale.set(1.5, 1.5, 1.5); // Increased scale
         model.position.y = 0;
         scene.add(model);
 
