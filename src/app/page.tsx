@@ -76,11 +76,11 @@ export default function Home() {
           </div>
           <div className="relative flex h-[300px] w-full items-center justify-center md:h-[400px]">
             <Image 
-              src="https://images.unsplash.com/photo-1645066928295-2506defde470?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxEb2N0b3IlMjAzRHxlbnwwfHx8fDE3NTg4NjEyMDJ8MA&ixlib=rb-4.1.0&q=80&w=1080"
+              src="https://storage.googleapis.com/stabl-diffusion-images/434f669a-302a-4137-b956-62057d81b315.png"
               alt="3D Doctor Illustration"
               fill
               className="object-contain"
-              data-ai-hint="doctor illustration"
+              data-ai-hint="doctor illustration no-background"
             />
           </div>
         </div>
