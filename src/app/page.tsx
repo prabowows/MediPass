@@ -77,7 +77,7 @@ export default function Home() {
               <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
                 Your Health Story,
                 <br />
-                Smart, Simplified & Secure.
+                Smart, Simple & Secure.
               </h1>
               <p className="max-w-[600px] text-muted-foreground md:text-xl">
                 MediPassport intelligently organizes your complete medical records and provides personalized AI insights, all in a single, secure digital passport. Share your history instantly with any hospital, anytime.
