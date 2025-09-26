@@ -32,7 +32,7 @@ const InfoField = ({ label, value }: { label: string; value: string | undefined 
 );
 
 const MedicalResume = ({ patient }: { patient: Patient }) => {
-  const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date(patient.consultationHistory[0].date));
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>();
 
   return (
     <div className="space-y-6">
