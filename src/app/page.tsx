@@ -77,10 +77,10 @@ export default function Home() {
               <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
                 Your Health Story,
                 <br />
-                Simplified & Secure.
+                Smart, Simplified & Secure.
               </h1>
               <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                MediPassport organizes your complete medical records into a
+                MediPassport intelligently organizes your complete medical records into a
                 single, secure digital passport. Share your history instantly
                 with any hospital, anytime.
               </p>
