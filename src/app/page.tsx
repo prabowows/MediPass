@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import {
   ArrowRight,
   HeartPulse,
@@ -11,6 +10,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import Hero3D from '@/components/home/hero-3d';
 
 const features = [
   {
@@ -75,13 +75,7 @@ export default function Home() {
             </div>
           </div>
           <div className="relative flex h-[300px] w-full items-center justify-center md:h-[400px]">
-            <Image
-              src="https://storage.googleapis.com/stabl-diffusion-images/434f669a-302a-4137-b956-62057d81b315.png"
-              alt="3D Doctor Illustration"
-              fill
-              className="object-contain"
-              data-ai-hint="doctor illustration no-background"
-            />
+            <Hero3D />
           </div>
         </div>
       </section>
