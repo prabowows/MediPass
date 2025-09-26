@@ -56,7 +56,7 @@ export const mainPatient: Patient = {
           { date: '2024-01-10', value: { systolic: 145, diastolic: 92 } },
           { date: '2024-02-08', value: { systolic: 142, diastolic: 90 } },
           { date: '2024-03-15', value: { systolic: 138, diastolic: 88 } },
-          { date: '2024-04-12', value: { systolic: 135, diastolic: 85 } },
+          { date: '2025-09-12', value: { systolic: 135, diastolic: 85 } },
           { date: '2024-05-20', value: { systolic: 130, diastolic: 84 } },
           { date: '2024-06-18', value: { systolic: 128, diastolic: 82 } },
         ]
@@ -68,7 +68,7 @@ export const mainPatient: Patient = {
           { date: '2024-01-15', value: 160 },
           { date: '2024-02-12', value: 155 },
           { date: '2024-03-18', value: 152 },
-          { date: '2024-04-20', value: 148 },
+          { date: '2025-09-20', value: 148 },
           { date: '2024-05-25', value: 145 },
           { date: '2024-06-22', value: 140 },
         ]
@@ -79,7 +79,7 @@ export const mainPatient: Patient = {
     surgeries: [
         { name: 'Appendectomy', date: '2012-03-20' },
         { name: 'Knee Arthroscopy', date: '2019-11-05' },
-        { name: 'Gallbladder Removal', date: '2024-04-12' },
+        { name: 'Gallbladder Removal', date: '2025-09-12' },
         { name: 'Tonsillectomy', date: '2002-07-22' },
     ],
     medications: [
@@ -96,13 +96,13 @@ export const mainPatient: Patient = {
       { name: 'Flu Shot', date: '2023-10-05' },
       { name: 'Tetanus (Tdap)', date: '2021-08-15' },
       { name: 'Hepatitis B', date: '2003-06-01' },
-      { name: 'Shingles (Shingrix)', date: '2024-04-02'},
-      { name: 'Pneumonia (PCV13)', date: '2024-04-30'}
+      { name: 'Shingles (Shingrix)', date: '2025-09-02'},
+      { name: 'Pneumonia (PCV13)', date: '2025-09-30'}
     ],
   },
   consultationHistory: [
     {
-      date: '2024-04-02',
+      date: '2025-09-02',
       doctor: 'Dr. Ben Adams',
       hospital: 'Central Clinic',
       reason: 'Asthma Diagnosis',
@@ -116,14 +116,14 @@ export const mainPatient: Patient = {
       notes: 'Blood pressure and blood sugar levels are stable. Recommended continued medication and diet monitoring.',
     },
     {
-      date: '2024-04-12',
+      date: '2025-09-12',
       doctor: 'Dr. James Smith',
       hospital: 'City Surgical Center',
       reason: 'Post-Op Follow-up',
       notes: 'Post-Gallbladder removal. Patient recovering well. Incisions look clean.',
     },
     {
-      date: '2024-03-23',
+      date: '2025-09-23',
       doctor: 'Dr. Olivia White',
       hospital: 'Central Clinic',
       reason: 'Dermatology Check',
@@ -151,7 +151,7 @@ export const mainPatient: Patient = {
       notes: 'Patient shows good recovery from arthroscopy. Recommended physical therapy.',
     },
      {
-      date: '2024-04-30',
+      date: '2025-09-30',
       doctor: 'Dr. Emily Carter',
       hospital: 'Springfield General',
       reason: 'Vaccination Appointment',
@@ -226,5 +226,6 @@ export const hospitalPatientHistory = [
         status: 'Active',
     },
 ];
+
 
 
