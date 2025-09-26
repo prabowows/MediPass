@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   ArrowRight,
   HeartPulse,
@@ -17,8 +18,10 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from '@/components/ui/carousel';
-import Hero3D from '@/components/home/hero-3d';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const features = [
   {
@@ -26,26 +29,34 @@ const features = [
     title: 'Comprehensive Medical Resume',
     description:
       'A single, unified view of your entire medical history, from conditions to consultations.',
+    imageId: 'feature-1',
   },
   {
     icon: <Bell className="h-8 w-8 text-primary" />,
     title: 'Personalized Notifications',
     description:
       'Receive AI-powered alerts for relevant health promotions, medication updates, and check-up reminders.',
+    imageId: 'feature-2',
   },
   {
     icon: <QrCode className="h-8 w-8 text-primary" />,
     title: 'Instant QR Access',
     description:
       'Generate a secure QR code for hospitals to instantly access your medical resume in emergencies.',
+    imageId: 'feature-3',
   },
   {
     icon: <Hospital className="h-8 w-8 text-primary" />,
     title: 'Seamless Hospital Integration',
     description:
       'Hospitals can scan your QR code to get up-to-date information, ensuring faster and safer care.',
+    imageId: 'feature-4',
   },
 ];
+
+const featureImages = PlaceHolderImages.filter(img =>
+  img.id.startsWith('feature-')
+);
 
 const hospitalLogos = [
   { name: 'Global Health', icon: <Stethoscope className="h-10 w-10" /> },
@@ -86,8 +97,31 @@ export default function Home() {
               </Button>
             </div>
           </div>
-          <div className="relative flex h-[300px] w-full items-center justify-center md:h-[400px]">
-            <Hero3D />
+          <div className="relative flex w-full items-center justify-center px-12">
+            <Carousel
+              className="w-full max-w-lg"
+              opts={{ loop: true }}
+              data-ai-hint="image carousel"
+            >
+              <CarouselContent>
+                {featureImages.map((image) => (
+                  <CarouselItem key={image.id}>
+                    <div className="aspect-video overflow-hidden rounded-xl">
+                      <Image
+                        src={image.imageUrl}
+                        alt={image.description}
+                        width={600}
+                        height={400}
+                        data-ai-hint={image.imageHint}
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="left-0" />
+              <CarouselNext className="right-0" />
+            </Carousel>
           </div>
         </div>
       </section>
