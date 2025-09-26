@@ -53,8 +53,8 @@ const MedicalResume = ({ patient }: { patient: Patient }) => {
       
       <Card>
         <CardHeader>
-          <CardTitle className="font-headline text-2xl">Medical Timeline</CardTitle>
-          <CardDescription>Click on a highlighted date to see event details.</CardDescription>
+          <CardTitle className="font-headline text-2xl">Medical Procedures</CardTitle>
+          <CardDescription>A calendar view of your past surgeries and vaccinations. Click a date for details.</CardDescription>
         </CardHeader>
         <CardContent className="grid grid-cols-1 gap-8 md:grid-cols-2">
             <MedicalCalendar patient={patient} selectedDate={selectedDate} onDateSelect={setSelectedDate} />
