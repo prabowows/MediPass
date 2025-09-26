@@ -1,3 +1,28 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "feature-1",
+      "description": "A doctor reviewing a patient's medical chart on a tablet.",
+      "imageUrl": "https://images.unsplash.com/photo-1758691462651-611d730c5272?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxtZWRpY2FsJTIwY2hhcnR8ZW58MHx8fHwxNzU4ODU5MDYyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "medical chart"
+    },
+    {
+      "id": "feature-2",
+      "description": "A smartphone showing a notification bell icon with a medical cross.",
+      "imageUrl": "https://images.unsplash.com/photo-1754821130727-685b74ac81fc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxwaG9uZSUyMG5vdGlmaWNhdGlvbnxlbnwwfHx8fDE3NTg4NTkwNjJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "phone notification"
+    },
+    {
+      "id": "feature-3",
+      "description": "A close-up of a QR code on a digital screen.",
+      "imageUrl": "https://images.unsplash.com/photo-1550482781-48d477e61c72?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxxciUyMGNvZGV8ZW58MHx8fHwxNzU4NzcxMDY3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "qr code"
+    },
+    {
+      "id": "feature-4",
+      "description": "A modern hospital building exterior on a sunny day.",
+      "imageUrl": "https://images.unsplash.com/photo-1597807037496-c56a1d8bc29a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8aG9zcGl0YWwlMjBidWlsZGluZ3xlbnwwfHx8fDE3NTg3OTIyNTR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "hospital building"
+    }
+  ]
 }
