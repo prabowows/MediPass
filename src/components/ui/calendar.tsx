@@ -1,3 +1,4 @@
+
 "use client"
 
 import * as React from "react"
@@ -36,10 +37,10 @@ function Calendar({
         head_cell:
           "text-muted-foreground rounded-md w-9 font-normal text-[0.8rem]",
         row: "flex w-full mt-2",
-        cell: "h-9 w-9 text-center text-sm p-0 relative [&:has([aria-selected])]:bg-accent first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
+        cell: "h-9 w-9 text-center text-sm p-0 relative first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
         day: cn(
           "h-9 w-9 p-0 font-normal aria-selected:opacity-100 rounded-md transition-colors",
-          "hover:bg-[#63a3b2] hover:text-primary-foreground"
+          "hover:border hover:border-dashed hover:border-primary"
         ),
         day_range_end: "day-range-end",
         day_selected:
