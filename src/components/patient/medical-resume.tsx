@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import type { Patient } from '@/lib/data';
 import {
   Card,
@@ -24,7 +24,11 @@ import MedicalCalendar from './medical-calendar';
 import MedicalEventDetails from './medical-event-details';
 import ConsultationTimeline from './consultation-timeline';
 
-const InfoField = ({ label, value }: { label: string; value: string | undefined }) => (
+const PersonalizedNotifications = React.lazy(() => import('@/components/patient/personalized-notifications'));
+import { PersonalizedNotificationsSkeleton } from '@/components/patient/personalized-notifications';
+
+
+const InfoField = ({ label, value }: { label: string | undefined; value: string | undefined }) => (
     <div className="grid grid-cols-2 gap-2">
         <p className="font-medium text-muted-foreground">{label}</p>
         <p>{value}</p>
@@ -36,6 +40,20 @@ const MedicalResume = ({ patient }: { patient: Patient }) => {
 
   return (
     <div className="space-y-6">
+       <Card>
+        <CardHeader>
+          <CardTitle className="font-headline text-2xl">Your Personal Health Analyst</CardTitle>
+          <CardDescription>
+            Exclusive insights curated by our AI based on your health profile.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Suspense fallback={<PersonalizedNotificationsSkeleton />}>
+              <PersonalizedNotifications />
+          </Suspense>
+        </CardContent>
+      </Card>
+
       <Card>
         <CardHeader>
           <CardTitle className="font-headline text-2xl">Personal Information</CardTitle>
