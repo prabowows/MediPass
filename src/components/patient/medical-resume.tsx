@@ -17,7 +17,7 @@ import {
 } from '@/components/ui/table';
 import { Separator } from '@/components/ui/separator';
 import { format } from 'date-fns';
-import ConditionCard from './condition-card';
+import MedicalCalendar from './medical-calendar';
 
 const InfoField = ({ label, value }: { label: string; value: string | undefined }) => (
     <div className="grid grid-cols-2 gap-2">
@@ -46,19 +46,26 @@ const MedicalResume = ({ patient }: { patient: Patient }) => {
       
       <Card>
         <CardHeader>
-          <CardTitle className="font-headline text-2xl">Medical History</CardTitle>
+          <CardTitle className="font-headline text-2xl">Medical Timeline</CardTitle>
+          <CardDescription>Click on a highlighted date to see event details.</CardDescription>
+        </CardHeader>
+        <CardContent>
+            <MedicalCalendar patient={patient} />
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="font-headline text-2xl">Medical Overview</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
             <div>
-                <h3 className="text-lg font-semibold mb-4">Conditions</h3>
-                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                    {patient.medicalHistory.conditions.map(c => (
-                        <ConditionCard key={c.name} condition={c} />
-                    ))}
+                <h3 className="text-lg font-semibold mb-2">Conditions</h3>
+                <div className="flex flex-wrap gap-2">
+                    {patient.medicalHistory.conditions.map(c => <Badge key={c.name} variant="outline">{c.name}</Badge>)}
                 </div>
             </div>
-
-            <div>
+             <div>
                 <h3 className="text-lg font-semibold mb-2">Allergies</h3>
                 <div className="flex flex-wrap gap-2">
                     {patient.medicalHistory.allergies.map(allergy => <Badge key={allergy} variant="secondary">{allergy}</Badge>)}
@@ -88,40 +95,8 @@ const MedicalResume = ({ patient }: { patient: Patient }) => {
                     </Table>
                 </div>
             </div>
-
-            <div>
-                <h3 className="text-lg font-semibold mb-2">Surgeries & Vaccinations</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <p className='font-medium text-muted-foreground'>Surgeries: {patient.medicalHistory.surgeries.map(s => `${s.name} (${format(new Date(s.date), 'yyyy')})`).join(', ')}</p>
-                    <p className='font-medium text-muted-foreground'>Vaccinations: {patient.medicalHistory.vaccinations.map(v => `${v.name} (${format(new Date(v.date), 'yyyy')})`).join(', ')}</p>
-                </div>
-            </div>
         </CardContent>
       </Card>
-
-      <Card>
-          <CardHeader>
-              <CardTitle className="font-headline text-2xl">Consultation History</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-              {patient.consultationHistory.map((item, index) => (
-                  <div key={index}>
-                      <div className="p-4 rounded-lg border bg-card">
-                          <div className="flex justify-between items-center mb-2">
-                              <h4 className="font-semibold">{item.reason}</h4>
-                              <p className="text-sm text-muted-foreground">{format(new Date(item.date), 'MMMM d, yyyy')}</p>
-                          </div>
-                          <p className="text-sm text-muted-foreground">
-                              {item.hospital} - Dr. {item.doctor}
-                          </p>
-                          <p className="mt-2 text-sm">{item.notes}</p>
-                      </div>
-                      {index < patient.consultationHistory.length - 1 && <Separator className="my-4"/>}
-                  </div>
-              ))}
-          </CardContent>
-      </Card>
-
     </div>
   );
 };
