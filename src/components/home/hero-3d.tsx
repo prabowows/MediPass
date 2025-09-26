@@ -1,6 +1,8 @@
 'use client';
 
 import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { useEffect, useRef } from 'react';
 
 const Hero3D = () => {
@@ -8,6 +10,7 @@ const Hero3D = () => {
 
   useEffect(() => {
     if (!mountRef.current) return;
+    const currentMount = mountRef.current;
 
     // Scene
     const scene = new THREE.Scene();
@@ -15,101 +18,77 @@ const Hero3D = () => {
     // Camera
     const camera = new THREE.PerspectiveCamera(
       75,
-      mountRef.current.clientWidth / mountRef.current.clientHeight,
+      currentMount.clientWidth / currentMount.clientHeight,
       0.1,
       1000
     );
-    camera.position.z = 5;
+    camera.position.set(0, 1.5, 3);
 
     // Renderer
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setSize(
-      mountRef.current.clientWidth,
-      mountRef.current.clientHeight
-    );
+    renderer.setSize(currentMount.clientWidth, currentMount.clientHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
-    mountRef.current.appendChild(renderer.domElement);
+    renderer.shadowMap.enabled = true;
+    currentMount.appendChild(renderer.domElement);
+    
+    // Controls
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableZoom = false;
+    controls.enablePan = false;
+    controls.target.set(0, 1, 0);
+    controls.update();
 
     // Lighting
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
     scene.add(ambientLight);
-    const pointLight = new THREE.PointLight(0xffffff, 1);
-    pointLight.position.set(5, 5, 5);
-    scene.add(pointLight);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    directionalLight.position.set(5, 10, 7.5);
+    directionalLight.castShadow = true;
+    scene.add(directionalLight);
 
-    // DNA Helix
-    const group = new THREE.Group();
-    scene.add(group);
+    // Load Model
+    const loader = new GLTFLoader();
+    loader.load('/customer-service.glb', (gltf) => {
+        const model = gltf.scene;
+        model.scale.set(1.2, 1.2, 1.2);
+        model.position.y = 0;
+        model.traverse((child) => {
+            if ((child as THREE.Mesh).isMesh) {
+                child.castShadow = true;
+                child.receiveShadow = true;
+            }
+        });
+        scene.add(model);
+    }, undefined, (error) => {
+        console.error('An error happened while loading the model:', error);
+    });
 
-    const numStrands = 2;
-    const numPoints = 100;
-    const radius = 1;
-    const height = 4;
-    const turns = 3;
+    // Floor
+    const floorGeometry = new THREE.PlaneGeometry(10, 10);
+    const floorMaterial = new THREE.ShadowMaterial({ opacity: 0.3 });
+    const floor = new THREE.Mesh(floorGeometry, floorMaterial);
+    floor.rotation.x = -Math.PI / 2;
+    floor.position.y = 0;
+    floor.receiveShadow = true;
+    scene.add(floor);
 
-    const createStrand = (offset: number) => {
-      const points = [];
-      for (let i = 0; i < numPoints; i++) {
-        const t = i / (numPoints - 1);
-        const angle = 2 * Math.PI * turns * t + offset;
-        const x = radius * Math.cos(angle);
-        const y = height * (t - 0.5);
-        const z = radius * Math.sin(angle);
-        points.push(new THREE.Vector3(x, y, z));
-      }
-      return new THREE.CatmullRomCurve3(points);
-    };
-
-    const strandGeometry = new THREE.TubeGeometry(
-      createStrand(0),
-      numPoints - 1,
-      0.05,
-      8,
-      false
-    );
-    const strandMaterial = new THREE.MeshPhongMaterial({ color: '#3CB371' });
-    const strand1 = new THREE.Mesh(strandGeometry, strandMaterial);
-    group.add(strand1);
-
-    const strand2 = new THREE.Mesh(
-      new THREE.TubeGeometry(createStrand(Math.PI), numPoints - 1, 0.05, 8, false),
-      strandMaterial
-    );
-    group.add(strand2);
-
-    // Rungs
-    const rungMaterial = new THREE.MeshPhongMaterial({ color: '#BFFF00' });
-    const rungGeometry = new THREE.CylinderGeometry(0.03, 0.03, radius * 2, 8);
-    
-    for (let i = 0; i < numPoints / 5; i++) {
-        const t = i / (numPoints / 5 -1);
-        const angle = 2 * Math.PI * turns * t;
-        const y = height * (t - 0.5);
-        const rung = new THREE.Mesh(rungGeometry, rungMaterial);
-        rung.position.y = y;
-        rung.rotation.z = Math.PI / 2;
-        rung.rotation.y = -angle;
-        group.add(rung);
-    }
 
     // Animation loop
     const animate = () => {
       requestAnimationFrame(animate);
-      group.rotation.y += 0.005;
+      controls.update();
       renderer.render(scene, camera);
     };
     animate();
 
     // Handle resize
     const handleResize = () => {
-      if (mountRef.current) {
-        camera.aspect =
-          mountRef.current.clientWidth / mountRef.current.clientHeight;
+      if (currentMount) {
+        const width = currentMount.clientWidth;
+        const height = currentMount.clientHeight;
+        camera.aspect = width / height;
         camera.updateProjectionMatrix();
-        renderer.setSize(
-          mountRef.current.clientWidth,
-          mountRef.current.clientHeight
-        );
+        renderer.setSize(width, height);
       }
     };
     window.addEventListener('resize', handleResize);
@@ -117,15 +96,15 @@ const Hero3D = () => {
     // Cleanup
     return () => {
       window.removeEventListener('resize', handleResize);
-      if (mountRef.current) {
-        mountRef.current.removeChild(renderer.domElement);
+      if (currentMount) {
+        currentMount.removeChild(renderer.domElement);
       }
       scene.clear();
       renderer.dispose();
     };
   }, []);
 
-  return <div ref={mountRef} className="h-full w-full" />;
+  return <div ref={mountRef} className="h-full w-full cursor-grab active:cursor-grabbing" />;
 };
 
 export default Hero3D;
