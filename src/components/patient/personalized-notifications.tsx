@@ -67,8 +67,8 @@ const PersonalizedNotifications = () => {
       <div className="rounded-lg border bg-card shadow-lg transition-all hover:shadow-xl">
         <div className="p-6">
           <div className="flex items-start gap-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-              <BrainCircuit className="h-6 w-6 text-primary" />
+            <div className="flex h-12 w-12 items-center justify-center rounded-full" style={{ backgroundColor: '#2596be1A' }}>
+              <BrainCircuit className="h-6 w-6" style={{ color: '#2596be' }}/>
             </div>
             <div className="flex-1">
               <h3 className="font-headline text-lg font-semibold text-foreground">
@@ -89,7 +89,7 @@ const PersonalizedNotifications = () => {
           className="w-full px-6 pb-4"
         >
           <AccordionItem value="item-1" className="border-t">
-            <AccordionTrigger className="text-base font-semibold text-primary">
+            <AccordionTrigger className="text-base font-semibold" style={{ color: '#2596be' }}>
               Relevant Insights
             </AccordionTrigger>
             <AccordionContent>
@@ -99,7 +99,7 @@ const PersonalizedNotifications = () => {
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-2" className="border-b-0">
-            <AccordionTrigger className="text-base font-semibold text-primary">
+            <AccordionTrigger className="text-base font-semibold" style={{ color: '#2596be' }}>
               Analyst&apos;s Reasoning
             </AccordionTrigger>
             <AccordionContent>
