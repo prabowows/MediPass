@@ -99,7 +99,7 @@ export default function MedicalEventDetails({ patient, selectedDate }: MedicalEv
                         {event.type === 'Consultation' && (
                             <>
                                 <p className="text-sm text-muted-foreground">
-                                    {event.details.hospital} - Dr. {event.details.doctor}
+                                    {event.details.hospital} - Dr. {event.details.doctor.name}
                                 </p>
                                 <p className="text-sm">{event.details.notes}</p>
                             </>
