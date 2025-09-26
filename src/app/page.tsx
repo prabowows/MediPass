@@ -46,7 +46,7 @@ const features = [
 export default function Home() {
   return (
     <div className="flex flex-col">
-      <section className="w-full bg-card pt-16 md:pt-24 lg:pt-32">
+      <section className="w-full bg-background pt-16 md:pt-24 lg:pt-32">
         <div className="container mx-auto grid grid-cols-1 gap-12 px-4 md:grid-cols-2 md:px-6">
           <div className="flex flex-col justify-center space-y-6">
             <div className="space-y-4">

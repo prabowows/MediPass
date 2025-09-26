@@ -10,7 +10,7 @@ export default function ViewPatientRecord({ params }: { params: { id: string } }
   const patient = params.id === mainPatient.id ? mainPatient : null;
 
   return (
-    <div className="bg-muted/40">
+    <div className="bg-background">
       <div className="container mx-auto py-8 md:py-12">
         <div className="mb-8">
             <Button asChild variant="ghost" className="mb-4">

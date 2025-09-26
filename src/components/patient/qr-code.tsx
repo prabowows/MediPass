@@ -23,7 +23,7 @@ const PatientQrCode = ({ patientId }: { patientId: string }) => {
 
   const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=${encodeURIComponent(
     patientUrl
-  )}&bgcolor=e5eae7`;
+  )}&bgcolor=fafdff`;
 
   return (
     <div className="flex flex-col items-center gap-4">

@@ -11,7 +11,7 @@ import { hospitalPatientHistory } from '@/lib/data';
 
 export default function HospitalDashboard() {
   return (
-    <div className="bg-muted/40">
+    <div className="bg-background">
       <div className="container mx-auto py-8 md:py-12">
         <div className="mb-8">
           <h1 className="font-headline text-3xl font-bold">
