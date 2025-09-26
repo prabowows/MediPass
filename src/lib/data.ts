@@ -1,3 +1,10 @@
+
+export type Condition = {
+  name: string;
+  diagnosed: string;
+  measurements?: { date: string; value: number | { systolic: number, diastolic: number } }[];
+};
+
 export type Patient = {
   id: string;
   name: string;
@@ -15,7 +22,7 @@ export type Patient = {
     phone: string;
   };
   medicalHistory: {
-    conditions: { name: string; diagnosed: string }[];
+    conditions: Condition[];
     surgeries: { name:string; date: string }[];
     medications: { name: string; dosage: string; frequency: string }[];
     allergies: string[];
@@ -42,8 +49,30 @@ export const mainPatient: Patient = {
   },
   medicalHistory: {
     conditions: [
-      { name: 'Hypertension', diagnosed: '2020-01-15' },
-      { name: 'Type 2 Diabetes', diagnosed: '2021-06-30' },
+      { 
+        name: 'Hypertension', 
+        diagnosed: '2020-01-15',
+        measurements: [
+          { date: '2024-01-10', value: { systolic: 145, diastolic: 92 } },
+          { date: '2024-02-08', value: { systolic: 142, diastolic: 90 } },
+          { date: '2024-03-15', value: { systolic: 138, diastolic: 88 } },
+          { date: '2024-04-12', value: { systolic: 135, diastolic: 85 } },
+          { date: '2024-05-20', value: { systolic: 130, diastolic: 84 } },
+          { date: '2024-06-18', value: { systolic: 128, diastolic: 82 } },
+        ]
+      },
+      { 
+        name: 'Type 2 Diabetes', 
+        diagnosed: '2021-06-30',
+        measurements: [
+          { date: '2024-01-15', value: 160 },
+          { date: '2024-02-12', value: 155 },
+          { date: '2024-03-18', value: 152 },
+          { date: '2024-04-20', value: 148 },
+          { date: '2024-05-25', value: 145 },
+          { date: '2024-06-22', value: 140 },
+        ]
+      },
       { name: 'Asthma', diagnosed: '2005-09-10' },
     ],
     surgeries: [{ name: 'Appendectomy', date: '2012-03-20' }],

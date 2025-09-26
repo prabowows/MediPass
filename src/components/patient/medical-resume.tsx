@@ -17,6 +17,7 @@ import {
 } from '@/components/ui/table';
 import { Separator } from '@/components/ui/separator';
 import { format } from 'date-fns';
+import ConditionCard from './condition-card';
 
 const InfoField = ({ label, value }: { label: string; value: string | undefined }) => (
     <div className="grid grid-cols-2 gap-2">
@@ -49,24 +50,11 @@ const MedicalResume = ({ patient }: { patient: Patient }) => {
         </CardHeader>
         <CardContent className="space-y-6">
             <div>
-                <h3 className="text-lg font-semibold mb-2">Conditions</h3>
-                <div className="rounded-md border">
-                    <Table>
-                        <TableHeader>
-                            <TableRow>
-                                <TableHead>Condition</TableHead>
-                                <TableHead>Date Diagnosed</TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                            {patient.medicalHistory.conditions.map(c => (
-                                <TableRow key={c.name}>
-                                    <TableCell className="font-medium">{c.name}</TableCell>
-                                    <TableCell>{format(new Date(c.diagnosed), 'MMM yyyy')}</TableCell>
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
+                <h3 className="text-lg font-semibold mb-4">Conditions</h3>
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                    {patient.medicalHistory.conditions.map(c => (
+                        <ConditionCard key={c.name} condition={c} />
+                    ))}
                 </div>
             </div>
 
