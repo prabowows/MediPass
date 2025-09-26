@@ -67,9 +67,6 @@ export default function MedicalCalendar({ patient, selectedDate, onDateSelect }:
       selected={selectedDate}
       onDayClick={handleDayClick}
       modifiers={{ highlighted: highlightedDays }}
-      modifiersClassNames={{
-        highlighted: 'bg-secondary text-secondary-foreground rounded-full',
-      }}
       className="rounded-md border w-full"
     />
   );
