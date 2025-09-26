@@ -89,9 +89,9 @@ export default function MedicalCalendar({ patient }: { patient: Patient }) {
         onDayClick={handleDayClick}
         modifiers={{ highlighted: highlightedDays }}
         modifiersClassNames={{
-          highlighted: 'bg-primary/20 text-primary-foreground rounded-full',
+          highlighted: 'bg-secondary text-secondary-foreground rounded-full',
         }}
-        className="rounded-md border"
+        className="rounded-md border w-full"
       />
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogContent className="sm:max-w-[425px]">
