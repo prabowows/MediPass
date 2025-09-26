@@ -1,3 +1,4 @@
+'use client';
 import Link from 'next/link';
 import {
   ArrowRight,
@@ -112,7 +113,7 @@ export default function Home() {
                   className="basis-1/3 md:basis-1/4 lg:basis-1/6"
                 >
                   <div className="p-1">
-                    <div className="flex aspect-square flex-col items-center justify-center gap-2 rounded-lg bg-muted/50 p-6 text-muted-foreground">
+                    <div className="flex aspect-square flex-col items-center justify-center gap-2 rounded-lg bg-[#63a3b2] p-6 text-white">
                       {logo.icon}
                       <p className="text-xs text-center font-medium">{logo.name}</p>
                     </div>
