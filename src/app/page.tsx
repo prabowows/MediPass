@@ -10,7 +10,6 @@ import {
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import Hero3D from '@/components/home/hero-3d';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const features = [
@@ -75,8 +74,15 @@ export default function Home() {
               </Button>
             </div>
           </div>
-          <div className="relative h-[300px] w-full md:h-[400px]">
-            <Hero3D />
+          <div className="relative flex h-[300px] w-full items-center justify-center md:h-[400px]">
+            <Image 
+              src="https://storage.googleapis.com/stabl-diffusion-images/434f669a-302a-4137-b956-62057d81b315.png"
+              alt="3D Doctor Illustration"
+              width={400}
+              height={400}
+              className="object-contain"
+              data-ai-hint="doctor illustration"
+            />
           </div>
         </div>
       </section>
