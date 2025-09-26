@@ -78,7 +78,9 @@ export const mainPatient: Patient = {
     ],
     surgeries: [
         { name: 'Appendectomy', date: '2012-03-20' },
-        { name: 'Knee Arthroscopy', date: '2019-11-05' }
+        { name: 'Knee Arthroscopy', date: '2019-11-05' },
+        { name: 'Gallbladder Removal', date: '2024-04-12' },
+        { name: 'Tonsillectomy', date: '2002-07-22' },
     ],
     medications: [
       { name: 'Lisinopril', dosage: '10mg', frequency: 'Once daily' },
@@ -86,22 +88,46 @@ export const mainPatient: Patient = {
       { name: 'Albuterol Inhaler', dosage: 'As needed', frequency: 'For asthma attacks' },
       { name: 'Omeprazole', dosage: '20mg', frequency: 'Once daily' },
       { name: 'Ibuprofen', dosage: '200mg', frequency: 'As needed for pain' },
+      { name: 'Atorvastatin', dosage: '20mg', frequency: 'Once daily' },
     ],
-    allergies: ['Penicillin', 'Peanuts', 'Dust Mites', 'Shellfish'],
+    allergies: ['Penicillin', 'Peanuts', 'Dust Mites', 'Shellfish', 'Sulfa Drugs'],
     vaccinations: [
       { name: 'COVID-19 (Pfizer)', date: '2023-11-10' },
       { name: 'Flu Shot', date: '2023-10-05' },
       { name: 'Tetanus (Tdap)', date: '2021-08-15' },
       { name: 'Hepatitis B', date: '2003-06-01' },
+      { name: 'Shingles (Shingrix)', date: '2024-04-02'},
+      { name: 'Pneumonia (PCV13)', date: '2024-04-30'}
     ],
   },
   consultationHistory: [
+     {
+      date: '2024-04-02',
+      doctor: 'Dr. Emily Carter',
+      hospital: 'Springfield General',
+      reason: 'Vaccination Appointment',
+      notes: 'Administered Shingles vaccine.',
+    },
     {
       date: '2024-03-15',
       doctor: 'Dr. Emily Carter',
       hospital: 'Springfield General',
       reason: 'Annual Check-up',
       notes: 'Blood pressure and blood sugar levels are stable. Recommended continued medication and diet monitoring.',
+    },
+    {
+      date: '2024-04-12',
+      doctor: 'Dr. James Smith',
+      hospital: 'City Surgical Center',
+      reason: 'Post-Op Follow-up',
+      notes: 'Post-Gallbladder removal. Patient recovering well. Incisions look clean.',
+    },
+    {
+      date: '2024-03-23',
+      doctor: 'Dr. Olivia White',
+      hospital: 'Central Clinic',
+      reason: 'Dermatology Check',
+      notes: 'Minor skin rash identified. Prescribed hydrocortisone cream.',
     },
     {
       date: '2023-09-20',
@@ -123,6 +149,13 @@ export const mainPatient: Patient = {
       hospital: 'OrthoCare Hospital',
       reason: 'Post-Op Knee Follow-up',
       notes: 'Patient shows good recovery from arthroscopy. Recommended physical therapy.',
+    },
+     {
+      date: '2024-04-30',
+      doctor: 'Dr. Emily Carter',
+      hospital: 'Springfield General',
+      reason: 'Vaccination Appointment',
+      notes: 'Administered Pneumonia vaccine.',
     },
   ],
 };
@@ -178,4 +211,19 @@ export const hospitalPatientHistory = [
         reason: 'Allergy Testing',
         status: 'Discharged'
     },
+    {
+        id: 'pat-11223',
+        name: 'Michael Brown',
+        lastVisit: '2024-04-01',
+        reason: 'Sprained Ankle',
+        status: 'Discharged',
+    },
+    {
+        id: 'pat-44556',
+        name: 'Emily Davis',
+        lastVisit: '2024-03-22',
+        reason: 'Physical Therapy',
+        status: 'Active',
+    },
 ];
+
