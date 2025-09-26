@@ -1,3 +1,7 @@
+
+'use client';
+
+import React, { Suspense } from 'react';
 import {
   Card,
   CardContent,
@@ -10,9 +14,11 @@ import { HeartPulse, QrCode, Bell } from 'lucide-react';
 
 import MedicalResume from '@/components/patient/medical-resume';
 import PatientQrCode from '@/components/patient/qr-code';
-import PersonalizedNotifications from '@/components/patient/personalized-notifications';
-
 import { mainPatient } from '@/lib/data';
+
+// Lazy load the notifications component
+const PersonalizedNotifications = React.lazy(() => import('@/components/patient/personalized-notifications'));
+import { PersonalizedNotificationsSkeleton } from '@/components/patient/personalized-notifications';
 
 export default function PatientDashboard() {
   return (
@@ -66,7 +72,9 @@ export default function PatientDashboard() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <PersonalizedNotifications />
+                <Suspense fallback={<PersonalizedNotificationsSkeleton />}>
+                    <PersonalizedNotifications />
+                </Suspense>
               </CardContent>
             </Card>
           </TabsContent>
