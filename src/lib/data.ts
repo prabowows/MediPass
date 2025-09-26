@@ -1,8 +1,26 @@
 
+import { PlaceHolderImages } from "./placeholder-images";
+
 export type Condition = {
   name: string;
   diagnosed: string;
   measurements?: { date: string; value: number | { systolic: number, diastolic: number } }[];
+};
+
+export type Doctor = {
+  id: string;
+  name: string;
+  specialty: string;
+  image: string;
+  imageHint: string;
+};
+
+export type Consultation = {
+  date: string;
+  doctorId: string;
+  hospital: string;
+  reason: string;
+  notes: string;
 };
 
 export type Patient = {
@@ -28,8 +46,76 @@ export type Patient = {
     allergies: string[];
     vaccinations: { name: string; date: string }[];
   };
-  consultationHistory: { date: string; doctor: string; hospital: string; reason: string; notes: string }[];
+  consultationHistory: (Consultation & { doctor: Doctor })[];
 };
+
+const doctors: Doctor[] = [
+    { id: 'doc-adams', name: 'Dr. Ben Adams', specialty: 'Pulmonologist', image: PlaceHolderImages.find(i => i.id === 'doctor-1')?.imageUrl || '', imageHint: PlaceHolderImages.find(i => i.id === 'doctor-1')?.imageHint || '' },
+    { id: 'doc-carter', name: 'Dr. Emily Carter', specialty: 'General Practitioner', image: PlaceHolderImages.find(i => i.id === 'doctor-2')?.imageUrl || '', imageHint: PlaceHolderImages.find(i => i.id === 'doctor-2')?.imageHint || ''},
+    { id: 'doc-smith', name: 'Dr. James Smith', specialty: 'General Surgeon', image: PlaceHolderImages.find(i => i.id === 'doctor-3')?.imageUrl || '', imageHint: PlaceHolderImages.find(i => i.id === 'doctor-3')?.imageHint || ''},
+    { id: 'doc-white', name: 'Dr. Olivia White', specialty: 'Dermatologist', image: PlaceHolderImages.find(i => i.id === 'doctor-4')?.imageUrl || '', imageHint: PlaceHolderImages.find(i => i.id === 'doctor-4')?.imageHint || ''},
+    { id: 'doc-lee', name: 'Dr. Sarah Lee', specialty: 'Gastroenterologist', image: PlaceHolderImages.find(i => i.id === 'doctor-5')?.imageUrl || '', imageHint: PlaceHolderImages.find(i => i.id === 'doctor-5')?.imageHint || '' },
+    { id: 'doc-chen', name: 'Dr. Michael Chen', specialty: 'Orthopedic Surgeon', image: PlaceHolderImages.find(i => i.id === 'doctor-6')?.imageUrl || '', imageHint: PlaceHolderImages.find(i => i.id === 'doctor-6')?.imageHint || ''},
+];
+
+const consultationHistory: Consultation[] = [
+    {
+      date: '2025-09-02',
+      doctorId: 'doc-adams',
+      hospital: 'Central Clinic',
+      reason: 'Asthma Diagnosis',
+      notes: 'Patient diagnosed with Asthma after presenting with shortness of breath and wheezing. Prescribed Albuterol Inhaler.',
+    },
+    {
+      date: '2024-03-15',
+      doctorId: 'doc-carter',
+      hospital: 'Springfield General',
+      reason: 'Annual Check-up',
+      notes: 'Blood pressure and blood sugar levels are stable. Recommended continued medication and diet monitoring.',
+    },
+    {
+      date: '2025-09-12',
+      doctorId: 'doc-smith',
+      hospital: 'City Surgical Center',
+      reason: 'Post-Op Follow-up',
+      notes: 'Post-Gallbladder removal. Patient recovering well. Incisions look clean.',
+    },
+    {
+      date: '2025-09-23',
+      doctorId: 'doc-white',
+      hospital: 'Central Clinic',
+      reason: 'Dermatology Check',
+      notes: 'Minor skin rash identified. Prescribed hydrocortisone cream.',
+    },
+    {
+      date: '2023-09-20',
+      doctorId: 'doc-adams',
+      hospital: 'Central Clinic',
+      reason: 'Asthma follow-up',
+      notes: 'Prescribed a new controller inhaler. Patient reports improved breathing.',
+    },
+     {
+      date: '2023-05-10',
+      doctorId: 'doc-lee',
+      hospital: 'Springfield General',
+      reason: 'Gastroenterology Consultation',
+      notes: 'Discussed management of GERD symptoms. Advised lifestyle changes and continuing Omeprazole.',
+    },
+    {
+      date: '2022-11-22',
+      doctorId: 'doc-chen',
+      hospital: 'OrthoCare Hospital',
+      reason: 'Post-Op Knee Follow-up',
+      notes: 'Patient shows good recovery from arthroscopy. Recommended physical therapy.',
+    },
+     {
+      date: '2025-09-30',
+      doctorId: 'doc-carter',
+      hospital: 'Springfield General',
+      reason: 'Vaccination Appointment',
+      notes: 'Administered Pneumonia vaccine.',
+    },
+];
 
 export const mainPatient: Patient = {
   id: 'pat-12345',
@@ -100,64 +186,10 @@ export const mainPatient: Patient = {
       { name: 'Pneumonia (PCV13)', date: '2025-09-30'}
     ],
   },
-  consultationHistory: [
-    {
-      date: '2025-09-02',
-      doctor: 'Dr. Ben Adams',
-      hospital: 'Central Clinic',
-      reason: 'Asthma Diagnosis',
-      notes: 'Patient diagnosed with Asthma after presenting with shortness of breath and wheezing. Prescribed Albuterol Inhaler.',
-    },
-    {
-      date: '2024-03-15',
-      doctor: 'Dr. Emily Carter',
-      hospital: 'Springfield General',
-      reason: 'Annual Check-up',
-      notes: 'Blood pressure and blood sugar levels are stable. Recommended continued medication and diet monitoring.',
-    },
-    {
-      date: '2025-09-12',
-      doctor: 'Dr. James Smith',
-      hospital: 'City Surgical Center',
-      reason: 'Post-Op Follow-up',
-      notes: 'Post-Gallbladder removal. Patient recovering well. Incisions look clean.',
-    },
-    {
-      date: '2025-09-23',
-      doctor: 'Dr. Olivia White',
-      hospital: 'Central Clinic',
-      reason: 'Dermatology Check',
-      notes: 'Minor skin rash identified. Prescribed hydrocortisone cream.',
-    },
-    {
-      date: '2023-09-20',
-      doctor: 'Dr. Ben Adams',
-      hospital: 'Central Clinic',
-      reason: 'Asthma follow-up',
-      notes: 'Prescribed a new controller inhaler. Patient reports improved breathing.',
-    },
-     {
-      date: '2023-05-10',
-      doctor: 'Dr. Sarah Lee',
-      hospital: 'Springfield General',
-      reason: 'Gastroenterology Consultation',
-      notes: 'Discussed management of GERD symptoms. Advised lifestyle changes and continuing Omeprazole.',
-    },
-    {
-      date: '2022-11-22',
-      doctor: 'Dr. Michael Chen',
-      hospital: 'OrthoCare Hospital',
-      reason: 'Post-Op Knee Follow-up',
-      notes: 'Patient shows good recovery from arthroscopy. Recommended physical therapy.',
-    },
-     {
-      date: '2025-09-30',
-      doctor: 'Dr. Emily Carter',
-      hospital: 'Springfield General',
-      reason: 'Vaccination Appointment',
-      notes: 'Administered Pneumonia vaccine.',
-    },
-  ],
+  consultationHistory: consultationHistory.map(c => ({
+    ...c,
+    doctor: doctors.find(d => d.id === c.doctorId)!,
+  })).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
 };
 
 export const hospitalPromotions = `
@@ -226,6 +258,3 @@ export const hospitalPatientHistory = [
         status: 'Active',
     },
 ];
-
-
-

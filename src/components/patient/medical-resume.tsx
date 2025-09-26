@@ -22,6 +22,7 @@ import {
 import { format } from 'date-fns';
 import MedicalCalendar from './medical-calendar';
 import MedicalEventDetails from './medical-event-details';
+import ConsultationTimeline from './consultation-timeline';
 
 const InfoField = ({ label, value }: { label: string; value: string | undefined }) => (
     <div className="grid grid-cols-2 gap-2">
@@ -58,6 +59,16 @@ const MedicalResume = ({ patient }: { patient: Patient }) => {
         <CardContent className="grid grid-cols-1 gap-8 md:grid-cols-2">
             <MedicalCalendar patient={patient} selectedDate={selectedDate} onDateSelect={setSelectedDate} />
             <MedicalEventDetails patient={patient} selectedDate={selectedDate} />
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="font-headline text-2xl">Consultation History</CardTitle>
+          <CardDescription>A timeline of your past consultations.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ConsultationTimeline consultations={patient.consultationHistory} />
         </CardContent>
       </Card>
 
