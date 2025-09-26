@@ -27,20 +27,32 @@ const Header = () => {
   const renderNavLinks = (isMobile = false) =>
     navLinks.map((link) => {
       const isActive = pathname === link.href;
-      const LinkComponent = isMobile ? SheetClose : 'div';
+      
+      const linkEl = (
+        <Link
+          href={link.href}
+          className={cn(
+            'text-sm font-medium transition-colors hover:text-primary',
+            isActive ? 'text-primary' : 'text-muted-foreground',
+            isMobile && 'block py-2 text-lg'
+          )}
+        >
+          {link.label}
+        </Link>
+      );
+
+      if (isMobile) {
+        return (
+          <SheetClose key={link.href} asChild>
+            {linkEl}
+          </SheetClose>
+        );
+      }
+
       return (
-        <LinkComponent key={link.href} asChild={isMobile}>
-          <Link
-            href={link.href}
-            className={cn(
-              'text-sm font-medium transition-colors hover:text-primary',
-              isActive ? 'text-primary' : 'text-muted-foreground',
-              isMobile && 'block py-2 text-lg'
-            )}
-          >
-            {link.label}
-          </Link>
-        </LinkComponent>
+        <div key={link.href}>
+          {linkEl}
+        </div>
       );
     });
 
