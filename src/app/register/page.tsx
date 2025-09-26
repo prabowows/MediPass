@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import {
   Card,
@@ -12,6 +14,8 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { User, Hospital } from 'lucide-react';
+import { useAuth } from '@/contexts/auth-context';
+import { useRouter } from 'next/navigation';
 
 const RegisterForm = ({ userType }: { userType: 'Patient' | 'Hospital' }) => (
   <CardContent className="space-y-4">
@@ -36,6 +40,14 @@ const RegisterForm = ({ userType }: { userType: 'Patient' | 'Hospital' }) => (
 );
 
 export default function RegisterPage() {
+  const { login } = useAuth();
+  const router = useRouter();
+
+  const handleRegister = (path: string) => {
+    login();
+    router.push(path);
+  }
+
   return (
     <div className="container flex min-h-[calc(100vh-10rem)] items-center justify-center py-12">
       <Tabs defaultValue="patient" className="w-full max-w-md">
@@ -59,7 +71,7 @@ export default function RegisterPage() {
             </CardHeader>
             <RegisterForm userType="Patient" />
             <CardFooter className="flex-col gap-4">
-              <Button className="w-full">Create Account</Button>
+              <Button className="w-full" onClick={() => handleRegister('/patient/dashboard')}>Create Account</Button>
               <div className="text-center text-sm">
                 Already have an account?{' '}
                 <Link href="/login" className="underline">
@@ -79,7 +91,7 @@ export default function RegisterPage() {
             </CardHeader>
             <RegisterForm userType="Hospital" />
             <CardFooter className="flex-col gap-4">
-              <Button className="w-full">Register Hospital</Button>
+              <Button className="w-full" onClick={() => handleRegister('/hospital/dashboard')}>Register Hospital</Button>
               <div className="text-center text-sm">
                 Already registered?{' '}
                 <Link href="/login" className="underline">

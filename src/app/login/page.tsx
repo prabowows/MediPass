@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import {
   Card,
@@ -12,6 +14,8 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { User, Hospital } from 'lucide-react';
+import { useAuth } from '@/contexts/auth-context';
+import { useRouter } from 'next/navigation';
 
 const LoginForm = ({ userType }: { userType: 'Patient' | 'Hospital' }) => (
   <CardContent className="space-y-4">
@@ -32,6 +36,15 @@ const LoginForm = ({ userType }: { userType: 'Patient' | 'Hospital' }) => (
 );
 
 export default function LoginPage() {
+  const { login } = useAuth();
+  const router = useRouter();
+
+  const handleLogin = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+    e.preventDefault();
+    login();
+    router.push(path);
+  }
+
   return (
     <div className="container flex min-h-[calc(100vh-10rem)] items-center justify-center py-12">
       <Tabs defaultValue="patient" className="w-full max-w-md">
@@ -56,7 +69,7 @@ export default function LoginPage() {
             <LoginForm userType="Patient" />
             <CardFooter className="flex-col gap-4">
               <Button className="w-full" asChild>
-                <Link href="/patient/dashboard">Login</Link>
+                <Link href="/patient/dashboard" onClick={(e) => handleLogin(e, '/patient/dashboard')}>Login</Link>
               </Button>
               <div className="text-center text-sm">
                 Don&apos;t have an account?{' '}
@@ -78,7 +91,7 @@ export default function LoginPage() {
             <LoginForm userType="Hospital" />
             <CardFooter className="flex-col gap-4">
               <Button className="w-full" asChild>
-                <Link href="/hospital/dashboard">Login</Link>
+                <Link href="/hospital/dashboard" onClick={(e) => handleLogin(e, '/hospital/dashboard')}>Login</Link>
               </Button>
               <div className="text-center text-sm">
                 Need to register your hospital?{' '}

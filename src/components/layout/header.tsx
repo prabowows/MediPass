@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Menu } from 'lucide-react';
+import { Menu, LogOut } from 'lucide-react';
 
 import {
   Sheet,
@@ -13,6 +13,7 @@ import { Button } from '@/components/ui/button';
 import Logo from '@/components/icons/logo';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
+import { useAuth } from '@/contexts/auth-context';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -23,6 +24,7 @@ const navLinks = [
 
 const Header = () => {
   const pathname = usePathname();
+  const { isLoggedIn, logout } = useAuth();
 
   const renderNavLinks = (isMobile = false) =>
     navLinks.map((link) => {
@@ -67,12 +69,21 @@ const Header = () => {
           {renderNavLinks()}
         </nav>
         <div className="flex flex-1 items-center justify-end space-x-4">
-          <Button asChild variant="ghost">
-            <Link href="/login">Login</Link>
-          </Button>
-          <Button asChild>
-            <Link href="/register">Register</Link>
-          </Button>
+          {!isLoggedIn ? (
+            <>
+              <Button asChild variant="ghost">
+                <Link href="/login">Login</Link>
+              </Button>
+              <Button asChild>
+                <Link href="/register">Register</Link>
+              </Button>
+            </>
+          ) : (
+            <Button variant="ghost" onClick={logout}>
+              <LogOut className="mr-2 h-4 w-4" />
+              Logout
+            </Button>
+          )}
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="outline" size="icon" className="md:hidden">
@@ -87,6 +98,16 @@ const Header = () => {
                   <span className="font-headline font-bold">MediPassport</span>
                 </Link>
                 {renderNavLinks(true)}
+                 {isLoggedIn && (
+                  <Button variant="ghost" onClick={() => {
+                    logout();
+                    // We might need to manually close the sheet on mobile
+                    // Depending on SheetClose behavior
+                  }}>
+                    <LogOut className="mr-2 h-4 w-4" />
+                    Logout
+                  </Button>
+                )}
               </div>
             </SheetContent>
           </Sheet>
