@@ -329,28 +329,32 @@ export default function Home() {
                   </ul>
                 </div>
                 <div className="order-1 md:order-2">
-                  <Image
-                    src="https://www.talenta.co/wp-content/uploads/2022/02/img-ilustrasi-5.png"
-                    alt="Ilustrasi masalah data medis yang tercecer"
-                    width={600}
-                    height={400}
-                    data-ai-hint="confused person cluttered desk"
-                    className="mx-auto rounded-lg"
-                  />
+                  <Card className="overflow-hidden">
+                    <Image
+                      src="https://www.talenta.co/wp-content/uploads/2022/02/img-ilustrasi-5.png"
+                      alt="Ilustrasi masalah data medis yang tercecer"
+                      width={600}
+                      height={400}
+                      data-ai-hint="confused person cluttered desk"
+                      className="mx-auto"
+                    />
+                  </Card>
                 </div>
               </div>
             </TabsContent>
             <TabsContent value="with" className="mt-10">
               <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
                  <div className="">
-                  <Image
-                    src="https://picsum.photos/seed/solution/600/400"
-                    alt="Ilustrasi data medis yang terorganisir dengan MediPass"
-                    width={600}
-                    height={400}
-                    data-ai-hint="organized data digital health"
-                    className="mx-auto rounded-lg"
-                  />
+                  <Card className="overflow-hidden">
+                    <Image
+                      src="https://picsum.photos/seed/solution/600/400"
+                      alt="Ilustrasi data medis yang terorganisir dengan MediPass"
+                      width={600}
+                      height={400}
+                      data-ai-hint="organized data digital health"
+                      className="mx-auto"
+                    />
+                  </Card>
                 </div>
                 <div className="">
                   <h3 className="mb-6 font-headline text-3xl font-bold">
