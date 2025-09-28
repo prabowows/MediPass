@@ -121,7 +121,7 @@ const LogoScroller = ({
         }}
       >
         {duplicatedLogos.map((logo, index) => (
-          <div key={index} className="w-40 flex-shrink-0 px-2">
+          <div key={index} className="w-40 flex-shrink-0">
             <div className="flex h-24 items-center justify-center rounded-lg bg-muted px-4">
               {logo.image ? (
                 <Image
@@ -133,7 +133,6 @@ const LogoScroller = ({
                 />
               ) : (
                 <div className="flex flex-col items-center gap-2">
-                  {logo.icon}
                   <p className="text-center text-xs font-medium text-muted-foreground">
                     {logo.name}
                   </p>
