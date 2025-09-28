@@ -233,7 +233,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="features" className="w-full bg-white py-12 md:py-16 lg:py-20">
+      <section id="features" className="w-full bg-white pt-8 pb-12 md:pt-12 md:pb-16 lg:pt-16 lg:pb-20">
         <div className="container mx-auto space-y-12 px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
