@@ -409,7 +409,7 @@ export default function Home() {
                     />
                   </Card>
                 </div>
-                <div className="">
+                <div>
                   <h3 className="mb-6 font-headline text-3xl font-bold">
                     Centralized Data, Easy Access
                   </h3>
@@ -513,3 +513,4 @@ export default function Home() {
     
 
     
+
