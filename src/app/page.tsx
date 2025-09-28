@@ -220,7 +220,7 @@ export default function Home() {
                 digital passport.
               </p>
             </div>
-            <div className="flex flex-col items-start gap-4">
+            <div className="flex flex-col gap-4 items-start">
               <Button asChild size="lg">
                 <Link href="/register">
                   Get Started
