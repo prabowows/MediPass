@@ -14,6 +14,8 @@ import {
   ShieldCheck,
   Search,
 } from 'lucide-react';
+import React from 'react';
+import Autoplay from 'embla-carousel-autoplay';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -23,6 +25,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from '@/components/ui/carousel';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { PlayCircle } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -111,6 +118,33 @@ const hospitalLogos = [
   },
 ];
 
+const testimonials = [
+  {
+    name: 'Sarah L.',
+    title: 'MediPass User',
+    avatar: 'https://picsum.photos/seed/patient-1/200/200',
+    avatarHint: 'smiling woman',
+    quote:
+      '“MediPass has been a lifesaver. It simplifies managing my entire medical history. When I need to share my records with a new doctor, everything is instantly accessible from the app—my conditions, past consultations, and medication list. It\'s incredibly convenient and gives me peace of mind.”',
+  },
+  {
+    name: 'Dr. Johnathan Lee',
+    title: 'General Practitioner',
+    avatar: 'https://picsum.photos/seed/doctor-1/200/200',
+    avatarHint: 'male doctor',
+    quote:
+      '“As a physician, getting a complete patient history quickly is crucial, especially in emergencies. MediPass\'s QR code system gives me instant access to verified medical data, allowing me to make faster, more informed decisions. It’s a huge step forward for patient safety and continuity of care.”',
+  },
+  {
+    name: 'Mark T.',
+    title: 'Caregiver for Parent',
+    avatar: 'https://picsum.photos/seed/caregiver-1/200/200',
+    avatarHint: 'middle-aged man',
+    quote:
+      '“Managing my elderly father\'s health was a constant challenge, with records scattered across multiple clinics. MediPass consolidated everything into one place. The AI notifications for medication reminders and relevant health tips are invaluable. It has truly empowered me as a caregiver.”',
+  },
+];
+
 const LogoScroller = ({
   logos,
   direction = 'left',
@@ -154,6 +188,10 @@ const LogoScroller = ({
 };
 
 export default function Home() {
+  const plugin = React.useRef(
+    Autoplay({ delay: 5000, stopOnInteraction: true })
+  );
+
   return (
     <div className="flex flex-col">
       <section className="w-full bg-white pt-16 md:pt-20 lg:pt-24">
@@ -414,28 +452,43 @@ export default function Home() {
               What Our Users Say
             </h2>
             <p className="mt-3 max-w-2xl mx-auto text-muted-foreground md:text-lg">
-              Hear from real patients who have transformed their healthcare experience.
+              Hear from real patients and doctors who have transformed their healthcare experience.
             </p>
           </div>
-          <div className="mx-auto max-w-3xl">
-              <Card className="bg-white p-6 md:p-8">
-                <CardContent className="flex flex-col items-center gap-6 md:flex-row p-0">
-                  <Avatar className="h-24 w-24 md:h-28 md:w-28 border-4 border-primary">
-                    <AvatarImage src="https://picsum.photos/seed/patient-testimonial/200/200" alt="Sarah L." data-ai-hint="smiling person" />
-                    <AvatarFallback>SL</AvatarFallback>
-                  </Avatar>
-                  <div className="relative text-center md:text-left">
-                    <p className="text-lg italic text-foreground md:text-xl">
-                      &ldquo;MediPass has been a lifesaver. It simplifies managing my entire medical history. When I need to share my records with a new doctor, everything is instantly accessible from the app—my conditions, past consultations, and medication list. It's incredibly convenient and gives me peace of mind.&rdquo;
-                    </p>
-                    <div className="mt-4">
-                      <p className="font-semibold">Sarah L.</p>
-                      <p className="text-sm text-muted-foreground">MediPass User</p>
-                    </div>
+          <Carousel
+            plugins={[plugin.current]}
+            className="w-full"
+            onMouseEnter={plugin.current.stop}
+            onMouseLeave={plugin.current.reset}
+            opts={{
+              align: 'start',
+              loop: true,
+            }}
+          >
+            <CarouselContent>
+              {testimonials.map((testimonial, index) => (
+                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                  <div className="p-1 h-full">
+                    <Card className="bg-white p-6 md:p-8 flex flex-col h-full">
+                      <CardContent className="flex flex-col items-center text-center flex-1 p-0">
+                        <Avatar className="h-24 w-24 mb-4 border-4 border-primary">
+                          <AvatarImage src={testimonial.avatar} alt={testimonial.name} data-ai-hint={testimonial.avatarHint} />
+                          <AvatarFallback>{testimonial.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+                        </Avatar>
+                        <p className="text-base italic text-foreground mb-4">
+                          {testimonial.quote}
+                        </p>
+                      </CardContent>
+                      <div className="mt-auto text-center">
+                        <p className="font-semibold">{testimonial.name}</p>
+                        <p className="text-sm text-muted-foreground">{testimonial.title}</p>
+                      </div>
+                    </Card>
                   </div>
-                </CardContent>
-              </Card>
-          </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
         </div>
       </section>
     </div>
