@@ -398,7 +398,7 @@ export default function Home() {
             <TabsContent value="with" className="mt-10">
               <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
                 <div className="[perspective:1000px] group">
-                  <Card className="overflow-hidden shadow-lg transition-transform duration-500 group-hover:rotate-y-0 [transform:rotateY(-15deg)]">
+                  <Card className="overflow-hidden shadow-lg animate-rotate-y-3d">
                     <Image
                       src="https://gcdnb.pbrd.co/images/atESRyGJUcWp.jpg?o=1"
                       alt="Illustration of organized medical data with MediPass"
@@ -513,4 +513,5 @@ export default function Home() {
     
 
     
+
 
