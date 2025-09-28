@@ -156,7 +156,7 @@ export default function Home() {
               Trusted by Leading Healthcare Providers
             </h3>
           </div>
-          <div className="relative flex flex-col gap-4 overflow-hidden">
+          <div className="relative flex flex-col overflow-hidden">
              <div className="absolute top-0 left-0 w-24 h-full bg-gradient-to-r from-background to-transparent z-10"></div>
              <div className="absolute top-0 right-0 w-24 h-full bg-gradient-to-l from-background to-transparent z-10"></div>
             <LogoScroller logos={hospitalLogos} direction="left" />
