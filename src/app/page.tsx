@@ -330,7 +330,7 @@ export default function Home() {
                 </div>
                 <div className="order-1 md:order-2">
                   <Image
-                    src="https://picsum.photos/seed/problem/600/400"
+                    src="https://www.talenta.co/wp-content/uploads/2022/02/img-ilustrasi-5.png"
                     alt="Ilustrasi masalah data medis yang tercecer"
                     width={600}
                     height={400}
