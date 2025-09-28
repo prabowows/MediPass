@@ -337,9 +337,9 @@ export default function Home() {
       <section className="w-full bg-white pb-12 md:pb-20 lg:pb-24">
         <div className="container mx-auto">
           <Tabs defaultValue="with" className="w-full">
-            <TabsList className="mx-auto grid w-full max-w-md grid-cols-2">
-              <TabsTrigger value="with">With MediPass</TabsTrigger>
-              <TabsTrigger value="without">Without MediPass</TabsTrigger>
+            <TabsList className="mx-auto grid w-full max-w-lg grid-cols-2 h-auto">
+              <TabsTrigger value="with" className="h-11 text-base">With MediPass</TabsTrigger>
+              <TabsTrigger value="without" className="h-11 text-base">Without MediPass</TabsTrigger>
             </TabsList>
             <TabsContent value="without" className="mt-10">
               <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
@@ -513,5 +513,3 @@ export default function Home() {
     
 
     
-
-
