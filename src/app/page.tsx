@@ -8,9 +8,6 @@ import {
   QrCode,
   Bell,
   Stethoscope,
-  BriefcaseMedical,
-  FlaskConical,
-  PlayCircle,
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -21,6 +18,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
+import { PlayCircle } from 'lucide-react';
 
 const features = [
   {
@@ -55,31 +53,55 @@ const features = [
 
 const hospitalLogos = [
   {
+    name: 'RS Sentosa Bogor',
+    image:
+      'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjT-WGpvy0OJ0H1sRrPLlNHFTDahAf_pKs9D9LegcYJlh_amvADDyqx1S1aBGoH2GQU4JMpqGmDpAJmnHoVlTh6omGDOZq6MUFBHixLGm5kEFife_unSztT6J2HhGLQ92JZ07nooFV_OleRqARvG4VFOaoV_eZ6bDDhbh7GBpOInZ_mBL-FECLrB_os/w420-h280-p-k-no-nu/rs%20sentosa%20bogor.jpg',
+  },
+  {
+    name: 'RS Sentosa Bogor',
+    image:
+      'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjT-WGpvy0OJ0H1sRrPLlNHFTDahAf_pKs9D9LegcYJlh_amvADDyqx1S1aBGoH2GQU4JMpqGmDpAJmnHoVlTh6omGDOZq6MUFBHixLGm5kEFife_unSztT6J2HhGLQ92JZ07nooFV_OleRqARvG4VFOaoV_eZ6bDDhbh7GBpOInZ_mBL-FECLrB_os/w420-h280-p-k-no-nu/rs%20sentosa%20bogor.jpg',
+  },
+  {
+    name: 'RS Sansani',
+    image:
+      'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjQBwiznd2zVnCEzErilRGGCp6h-Yk4AGpW49t_PQwd277Gy-UXSThVWptJpUUMquJcVgYau3mBI4TrVwFyxkK0kVNoc2qI6wv3f7qvNRkTZ0Ec6pJKvTpIF8dLiiUav6gsJA19rqqWNhJPNCsFqlcyPKpTu_VNEu20Uor4mcAYgI-GBz0JNlO9xwkJ/w420-h280-p-k-no-nu/rs%20sansani.jpg',
+  },
+  {
+    name: 'RS Hasyim Asyari',
+    image:
+      'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhsd-IKDdGs9iHH0InsJw8LZ8wACIrmT51jxWZLHdrmWH7ophM_jbbLDJHfGvZ-CF7sShtoPRMY4YfAyCqROCmNFotDpoMODgU61nuswfboRBvFZ1HZTbLCT6Xe7M52tMOy7YSogXWyeToxye8yOYr6kCT439BeK_cQ8N5HYYzkChzkJGqHvZHqH9qF/w420-h280-p-k-no-nu/rs%20HASYIM%20ASYARI.jpg',
+  },
+  {
+    name: 'RS Paramedika Bekasi',
+    image:
+      'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitB_INiDQG-0VuIcza7zNq-JRlYo_Je6wAlhDRxPHnGtZfzlsGATT_oj2K7st7oq7B2NDPI4cWm_dzaN6K9pDESbVFSJKsGvSK0Bdzcg9PfKuLBNzZ5eD-IM374EK_XJfpMgze9KsN-qlHYeD_3mzeQZ7b7Tn6BcZFsNqRBKVL65ty3T338DjP_YNEGDs/w420-h280-p-k-no-nu/logo%20RUMAH%20SAKIT%20paramedika%20bekasi.jpg',
+  },
+  {
     name: 'RS JIH Solo',
     image:
-      'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi_gL0WBD--GHwPXXmDE87wbbAPrj5hTxwp_9SNWT4mCyv5eTd2JXh-Ond5GH3fFidBWU9q3Y7ICJ3vnvBlZA_ficXySGbcXImHdfPAvdK9bupLg6nO0oYrEDen_8-6s4N75PJxJost4ddT0RJYQ3fYEvOZNnLtdM0F6uWSteT4bXbNWXz0NgZNPAXq/s1692/rs%20jih%20solo.jpg',
+      'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi_gL0WBD--GHwPXXmDE87wbbAPrj5hTxwp_9SNWT4mCyv5eTd2JXh-Ond5GH3fFidBWU9q3Y7ICJ3vnvBlZA_ficXySGbcXImHdfPAvdK9bupLg6nO0oYrEDen_8-6s4N75PJxJost4ddT0RJYQ3fYEvOZNnLtdM0F6uWSteT4bXbNWXz0NgZNPAXq/w420-h280-p-k-no-nu/rs%20jih%20solo.jpg',
   },
   {
-    name: 'RS Kasih Ibu',
+    name: 'RS Mitra Husada',
     image:
-      'https://img.idxchannel.com/media/700/images/idx/2023/08/18/IMG-20230818-WA0030.jpg',
+      'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjy_ZCSsQHIEITz0h7_QcHUX_6cL-1cBCdR9Ki4n7MYmwqpawkFyAe9jqg-13Py8QNa3QxP0RkwL9zr--j7w98beWiyFDLxQOXRwi4UCnIZFdot6uJl5h7qL9SwraDXPkeFP4_zldEvTEwWGyk1mO7_EolHGxvhHo-jw0BBoBFv5MctznHEvHYXnPpE/w420-h280-p-k-no-nu/rs%20mitra%20husdad.jpg',
   },
   {
-    name: 'RS PKU Muhammadiyah',
+    name: 'RS Sumber Hurip',
     image:
-      'https://static.wikia.nocookie.net/logopedia/images/b/b6/Rumah_Sakit_PKU_Muhammadiyah_Bantul.png/revision/latest?cb=20191009161639',
+      'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgg_xxL_rJ_ifVl0dESUmgYwa7WEAo7x3SUMvwikPkC2jagItOM-51p67p4nfHeJLOT89OJyeGw-psjjHK6l2XLPdsPHsVzfYOGtgB-yRg8Nj1JhpU6i_kgnxEH0-Kgs7H1hTbBdz3-gAZ64wU0W6dWAfdIsNVMcUj0sv3p21GmK6Kftb0G7BoJ7e2Y/w420-h280-p-k-no-nu/rs%20sumber%20hurip.jpg',
   },
   {
-    name: 'Mayapada Hospital',
+    name: 'RS Tugu Ibu',
     image:
-      'https://images.seeklogo.com/logo-png/36/1/rs-mayapada-logo-png_seeklogo-369059.png',
+      'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj5Ru5E-OsPQ6sifkyNNynJBwayQNi7SQYotAgdjbrzgF1RgoojdpDQHNGkObJMkvqjzV2aOg1-wl_9YCUjBLDevc6c9Sc6P2Up0wkipyR5m_9_iLiCp7gBPwDsynwLWxm473hubhK0bc4_Ppb8Wbwy1atEoongL_L3RmiKgFLqTKyJytpa0l9gKp2T/w420-h280-p-k-no-nu/1%20rs%20tugu%20ibu.jpg',
   },
   {
-    name: 'Siloam Hospitals',
+    name: 'RS Surya Insani',
     image:
-      'https://upload.wikimedia.org/wikipedia/commons/5/5e/Siloam_Hospitals.svg',
+      'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh7zKOI2KnBdoPzuG4hRfHFdGvlUSU6BqlIhOvLsmbxxjbVzmMlxsuZwAE7ebGXcklhCtKmz8vK2AInXOxhc7HT4gmj2KXJGtBPe3M6Gf4fpKqeq2R14k-htbqykVVQVpopOK6OjM7KTpYuyH9XPDtagexPbtdYc7XQsUocUt1DLRLpj0xYAOsoJEXI/w420-h280-p-k-no-nu/rs%20surya%20insani.jpg',
   },
-  { name: 'General United', icon: <Stethoscope className="h-10 w-10" /> },
 ];
 
 const LogoScroller = ({
@@ -99,8 +121,8 @@ const LogoScroller = ({
         }}
       >
         {duplicatedLogos.map((logo, index) => (
-          <div key={index} className="w-48 flex-shrink-0 px-4">
-            <div className="flex h-24 items-center justify-center rounded-lg bg-muted p-4">
+          <div key={index} className="w-40 flex-shrink-0 px-2">
+            <div className="flex h-24 items-center justify-center rounded-lg bg-muted px-4">
               {logo.image ? (
                 <Image
                   src={logo.image}
