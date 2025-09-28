@@ -227,7 +227,7 @@ export default function Home() {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline">
+              <Button asChild size="lg" variant="secondary">
                 <Link href="/login">
                   <LogIn className="mr-2 h-5 w-5" />
                   Login
@@ -400,7 +400,7 @@ export default function Home() {
                  <div className="">
                   <Card className="overflow-hidden">
                     <Image
-                      src="https://i.ibb.co/Lz3nnZC0/2f3a4a99-d4c0-4605-ab32-af65e48e5c6b.jpg"
+                      src="https://i.ibb.co/Lz3nnZC/2f3a4a99-d4c0-4605-ab32-af65e48e5c6b.jpg"
                       alt="Ilustrasi data medis yang terorganisir dengan MediPass"
                       width={600}
                       height={400}
@@ -510,3 +510,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
