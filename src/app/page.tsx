@@ -397,18 +397,6 @@ export default function Home() {
             </TabsContent>
             <TabsContent value="with" className="mt-10">
               <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
-                 <div className="[perspective:1000px] group">
-                  <Card className="overflow-hidden shadow-lg transition-transform duration-500 group-hover:rotate-y-0 [transform:rotateY(-15deg)]">
-                    <Image
-                      src="https://gcdnb.pbrd.co/images/atESRyGJUcWp.jpg?o=1"
-                      alt="Illustration of organized medical data with MediPass"
-                      width={600}
-                      height={400}
-                      data-ai-hint="organized data digital health"
-                      className="mx-auto"
-                    />
-                  </Card>
-                </div>
                 <div className="">
                   <h3 className="mb-6 font-headline text-3xl font-bold">
                     Centralized Data, Easy Access
@@ -448,6 +436,18 @@ export default function Home() {
                       </div>
                     </li>
                   </ul>
+                </div>
+                <div className="[perspective:1000px] group">
+                  <Card className="overflow-hidden shadow-lg transition-transform duration-500 group-hover:rotate-y-0 [transform:rotateY(15deg)]">
+                    <Image
+                      src="https://gcdnb.pbrd.co/images/atESRyGJUcWp.jpg?o=1"
+                      alt="Illustration of organized medical data with MediPass"
+                      width={600}
+                      height={400}
+                      data-ai-hint="organized data digital health"
+                      className="mx-auto"
+                    />
+                  </Card>
                 </div>
               </div>
             </TabsContent>
