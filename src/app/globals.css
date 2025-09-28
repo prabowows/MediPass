@@ -66,3 +66,18 @@ section {
 section:has(> .container > div > .relative > div[class*="h-full"]) {
     z-index: 0;
 }
+
+@layer utilities {
+    @keyframes scroll {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(-50%);
+        }
+    }
+
+    .animate-scroll {
+        animation: scroll 40s linear infinite;
+    }
+}

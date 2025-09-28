@@ -16,11 +16,6 @@ import {
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from '@/components/ui/carousel';
-import {
   Dialog,
   DialogContent,
   DialogTitle,
@@ -66,6 +61,29 @@ const hospitalLogos = [
   { name: 'Innovate Labs', icon: <FlaskConical className="h-10 w-10" /> },
   { name: 'General United', icon: <Stethoscope className="h-10 w-10" /> },
 ];
+
+const LogoScroller = ({ logos, direction = 'left' } : { logos: typeof hospitalLogos, direction?: 'left' | 'right' }) => {
+    const duplicatedLogos = [...logos, ...logos];
+    return (
+        <div className="w-full overflow-hidden">
+            <div 
+                className="flex animate-scroll"
+                style={{
+                    animationDirection: direction === 'left' ? 'normal' : 'reverse',
+                }}
+            >
+                {duplicatedLogos.map((logo, index) => (
+                    <div key={index} className="flex-shrink-0 w-48 p-4">
+                        <div className="flex flex-col items-center justify-center gap-2 rounded-lg bg-muted p-6 h-32">
+                        {logo.icon}
+                        <p className="text-xs text-center font-medium text-muted-foreground">{logo.name}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    )
+}
 
 export default function Home() {
   return (
@@ -131,36 +149,19 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="w-full bg-background py-12">
+      <section className="w-full bg-background py-12 md:py-16">
         <div className="container mx-auto">
           <div className="text-center mb-8">
             <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
               Trusted by Leading Healthcare Providers
             </h3>
           </div>
-          <Carousel
-            opts={{
-              align: 'start',
-              loop: true,
-            }}
-            className="w-full"
-          >
-            <CarouselContent>
-              {hospitalLogos.map((logo, index) => (
-                <CarouselItem
-                  key={index}
-                  className="basis-1/3 md:basis-1/4 lg:basis-1/6"
-                >
-                  <div className="p-1">
-                    <div className="flex aspect-square flex-col items-center justify-center gap-2 rounded-lg bg-[#63a3b2] p-6 text-white">
-                      {logo.icon}
-                      <p className="text-xs text-center font-medium">{logo.name}</p>
-                    </div>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
+          <div className="relative flex flex-col gap-4 overflow-hidden">
+             <div className="absolute top-0 left-0 w-24 h-full bg-gradient-to-r from-background to-transparent z-10"></div>
+             <div className="absolute top-0 right-0 w-24 h-full bg-gradient-to-l from-background to-transparent z-10"></div>
+            <LogoScroller logos={hospitalLogos} direction="left" />
+            <LogoScroller logos={[...hospitalLogos].reverse()} direction="right" />
+          </div>
         </div>
       </section>
 
