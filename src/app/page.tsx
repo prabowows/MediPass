@@ -25,6 +25,7 @@ import {
 } from '@/components/ui/dialog';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { PlayCircle } from 'lucide-react';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const features = [
   {
@@ -403,6 +404,38 @@ export default function Home() {
               </div>
             </TabsContent>
           </Tabs>
+        </div>
+      </section>
+
+      <section className="w-full bg-background py-12 md:py-20 lg:py-24">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="mb-12 text-center">
+            <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl">
+              What Our Users Say
+            </h2>
+            <p className="mt-3 max-w-2xl mx-auto text-muted-foreground md:text-lg">
+              Hear from real patients who have transformed their healthcare experience.
+            </p>
+          </div>
+          <div className="mx-auto max-w-3xl">
+              <Card className="bg-white p-6 md:p-8">
+                <CardContent className="flex flex-col items-center gap-6 md:flex-row p-0">
+                  <Avatar className="h-24 w-24 md:h-28 md:w-28 border-4 border-primary">
+                    <AvatarImage src="https://picsum.photos/seed/patient-testimonial/200/200" alt="Sarah L." data-ai-hint="smiling person" />
+                    <AvatarFallback>SL</AvatarFallback>
+                  </Avatar>
+                  <div className="relative text-center md:text-left">
+                    <p className="text-lg italic text-foreground md:text-xl">
+                      &ldquo;MediPass has been a lifesaver. It simplifies managing my entire medical history. When I need to share my records with a new doctor, everything is instantly accessible from the app—my conditions, past consultations, and medication list. It's incredibly convenient and gives me peace of mind.&rdquo;
+                    </p>
+                    <div className="mt-4">
+                      <p className="font-semibold">Sarah L.</p>
+                      <p className="text-sm text-muted-foreground">MediPass User</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+          </div>
         </div>
       </section>
     </div>
