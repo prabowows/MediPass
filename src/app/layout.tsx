@@ -5,6 +5,7 @@ import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import './globals.css';
 import { AuthProvider } from '@/contexts/auth-context';
+import FloatingButtons from '@/components/layout/floating-buttons';
 
 export const metadata: Metadata = {
   title: 'MediPass',
@@ -36,6 +37,7 @@ export default function RootLayout({
             <Header />
             <main className="flex-1">{children}</main>
             <Footer />
+            <FloatingButtons />
           </div>
           <Toaster />
         </AuthProvider>
