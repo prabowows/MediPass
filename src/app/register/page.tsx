@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -36,6 +37,12 @@ const RegisterForm = ({ userType }: { userType: 'Patient' | 'Hospital' }) => (
       <Label htmlFor={`${userType.toLowerCase()}-password`}>Password</Label>
       <Input id={`${userType.toLowerCase()}-password`} type="password" required />
     </div>
+    {userType === 'Hospital' && (
+      <div className="space-y-2">
+        <Label htmlFor="hospital-verification-key">Verification Key</Label>
+        <Input id="hospital-verification-key" type="text" placeholder="Enter your verification key" required />
+      </div>
+    )}
   </CardContent>
 );
 
