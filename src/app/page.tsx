@@ -14,6 +14,8 @@ import {
   ShieldCheck,
   Search,
   LogIn,
+  LightbulbOff,
+  BrainCircuit
 } from 'lucide-react';
 import React from 'react';
 import Autoplay from 'embla-carousel-autoplay';
@@ -333,25 +335,24 @@ export default function Home() {
 
       <section className="w-full bg-white pb-12 md:pb-20 lg:pb-24">
         <div className="container mx-auto">
-          <Tabs defaultValue="without" className="w-full">
+          <Tabs defaultValue="with" className="w-full">
             <TabsList className="mx-auto grid w-full max-w-md grid-cols-2">
-              <TabsTrigger value="with">Dengan MediPass</TabsTrigger>
-              <TabsTrigger value="without">Tanpa MediPass</TabsTrigger>
+              <TabsTrigger value="with">With MediPass</TabsTrigger>
+              <TabsTrigger value="without">Without MediPass</TabsTrigger>
             </TabsList>
             <TabsContent value="without" className="mt-10">
               <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
                 <div className="order-2 md:order-1">
                   <h3 className="mb-6 font-headline text-3xl font-bold">
-                    Data Tercecer dan Sulit Diakses
+                    Scattered Data, Difficult Access
                   </h3>
                   <ul className="space-y-6">
                     <li className="flex items-start gap-4">
                       <XCircle className="mt-1 h-6 w-6 flex-shrink-0 text-destructive" />
                       <div>
-                        <h4 className="font-semibold">Dokumen yang tercecer</h4>
+                        <h4 className="font-semibold">Fragmented Documents</h4>
                         <p className="text-muted-foreground">
-                          Administrasi menjadi lambat karena harus mencari-cari
-                          dokumen fisik. Data juga rentan hilang atau rusak.
+                          Administration slows down due to searching for physical documents. Data is also prone to loss or damage.
                         </p>
                       </div>
                     </li>
@@ -359,33 +360,31 @@ export default function Home() {
                       <XCircle className="mt-1 h-6 w-6 flex-shrink-0 text-destructive" />
                       <div>
                         <h4 className="font-semibold">
-                          Informasi tersebar
+                          Information is Dispersed
                         </h4>
                         <p className="text-muted-foreground">
-                          Riwayat medis tersebar di berbagai rumah sakit dan
-                          sulit untuk digabungkan menjadi satu pandangan utuh.
+                          Medical history is spread across various hospitals and is difficult to consolidate into a single, comprehensive view.
                         </p>
                       </div>
                     </li>
                     <li className="flex items-start gap-4">
-                      <XCircle className="mt-1 h-6 w-6 flex-shrink-0 text-destructive" />
+                      <LightbulbOff className="mt-1 h-6 w-6 flex-shrink-0 text-destructive" />
                       <div>
                         <h4 className="font-semibold">
-                          Risiko keamanan dan privasi
+                          No Proactive Insights
                         </h4>
                         <p className="text-muted-foreground">
-                          Penyimpanan data konvensional memiliki risiko
-                          pencurian, korupsi, dan kehilangan data yang tinggi.
+                          You receive generic health information that may not apply to your specific conditions or medications, leading to missed opportunities.
                         </p>
                       </div>
                     </li>
                   </ul>
                 </div>
                 <div className="order-1 md:order-2">
-                  <Card className="overflow-hidden">
+                  <Card className="overflow-hidden shadow-lg">
                     <Image
                       src="https://www.talenta.co/wp-content/uploads/2022/02/img-ilustrasi-5.png"
-                      alt="Ilustrasi masalah data medis yang tercecer"
+                      alt="Illustration of scattered medical data issues"
                       width={600}
                       height={400}
                       data-ai-hint="confused person cluttered desk"
@@ -398,10 +397,10 @@ export default function Home() {
             <TabsContent value="with" className="mt-10">
               <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
                  <div className="">
-                  <Card className="overflow-hidden">
+                  <Card className="overflow-hidden shadow-lg">
                     <Image
                       src="https://i.ibb.co/Lz3nnZC/2f3a4a99-d4c0-4605-ab32-af65e48e5c6b.jpg"
-                      alt="Ilustrasi data medis yang terorganisir dengan MediPass"
+                      alt="Illustration of organized medical data with MediPass"
                       width={600}
                       height={400}
                       data-ai-hint="organized data digital health"
@@ -411,18 +410,17 @@ export default function Home() {
                 </div>
                 <div className="">
                   <h3 className="mb-6 font-headline text-3xl font-bold">
-                    Data Terpusat dan Mudah Diakses
+                    Centralized Data, Easy Access
                   </h3>
                   <ul className="space-y-6">
                     <li className="flex items-start gap-4">
                       <CheckCircle2 className="mt-1 h-6 w-6 flex-shrink-0 text-green-500" />
                       <div>
                         <h4 className="font-semibold">
-                          Resume Medis Terpusat
+                          Centralized Medical Resume
                         </h4>
                         <p className="text-muted-foreground">
-                          Semua riwayat medis Anda, dari alergi hingga riwayat
-                          konsultasi, terkumpul dalam satu platform digital.
+                          All your medical history, from allergies to consultation history, is gathered in one digital platform.
                         </p>
                       </div>
                     </li>
@@ -430,24 +428,21 @@ export default function Home() {
                       <CheckCircle2 className="mt-1 h-6 w-6 flex-shrink-0 text-green-500" />
                       <div>
                         <h4 className="font-semibold">
-                          Akses Cepat dengan QR Code
+                          Quick Access with QR Code
                         </h4>
                         <p className="text-muted-foreground">
-                          Petugas medis dapat mengakses data Anda dengan cepat
-                          dan aman hanya dengan memindai QR code, vital dalam
-                          keadaan darurat.
+                          Medical staff can access your data quickly and securely just by scanning a QR code, which is vital in emergencies.
                         </p>
                       </div>
                     </li>
                     <li className="flex items-start gap-4">
-                      <CheckCircle2 className="mt-1 h-6 w-6 flex-shrink-0 text-green-500" />
+                      <BrainCircuit className="mt-1 h-6 w-6 flex-shrink-0 text-green-500" />
                       <div>
                         <h4 className="font-semibold">
-                          Keamanan Data Terjamin
+                          Personalized AI Insights
                         </h4>
                         <p className="text-muted-foreground">
-                          Dibangun dengan standar keamanan modern untuk
-                          memastikan data medis Anda selalu aman dan privat.
+                          Receive intelligent notifications about health promotions, medication updates, and recommendations relevant to your profile.
                         </p>
                       </div>
                     </li>
@@ -510,5 +505,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
