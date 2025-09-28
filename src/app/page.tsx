@@ -278,7 +278,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="w-full bg-white py-12 md:py-20 lg:py-24">
+      <section className="w-full bg-white pb-12 md:pb-20 lg:pb-24">
         <div className="container mx-auto">
           <Tabs defaultValue="without" className="w-full">
             <TabsList className="mx-auto grid w-full max-w-md grid-cols-2">
