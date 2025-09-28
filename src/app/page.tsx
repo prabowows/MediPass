@@ -220,23 +220,19 @@ export default function Home() {
                 digital passport.
               </p>
             </div>
-            <div className="flex flex-col gap-4 items-start">
+            <div className="flex flex-col gap-4 sm:flex-row">
               <Button asChild size="lg">
                 <Link href="/register">
                   Get Started
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
-              <p className="text-sm text-muted-foreground">
-                Already have an account?{' '}
-                <Link
-                  href="/login"
-                  className="inline-flex items-center font-semibold text-primary underline-offset-4 hover:underline"
-                >
-                  Sign In
-                  <LogIn className="ml-1 h-4 w-4" />
+              <Button asChild size="lg" variant="outline">
+                <Link href="/login">
+                  <LogIn className="mr-2 h-5 w-5" />
+                  Login
                 </Link>
-              </p>
+              </Button>
             </div>
           </div>
           <div className="relative flex w-full items-center justify-center">
