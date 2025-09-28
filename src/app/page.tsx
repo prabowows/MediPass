@@ -347,7 +347,7 @@ export default function Home() {
                  <div className="">
                   <Card className="overflow-hidden">
                     <Image
-                      src="https://picsum.photos/seed/solution/600/400"
+                      src="https://i.ibb.co/Lz3nnZC0/2f3a4a99-d4c0-4605-ab32-af65e48e5c6b.jpg"
                       alt="Ilustrasi data medis yang terorganisir dengan MediPass"
                       width={600}
                       height={400}
