@@ -214,7 +214,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="w-full bg-card py-12 md:py-16">
+      <section className="w-full bg-white py-12 md:py-16">
         <div className="container mx-auto">
           <div className="mb-8 text-center">
             <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
@@ -222,8 +222,8 @@ export default function Home() {
             </h3>
           </div>
           <div className="relative flex flex-col overflow-hidden">
-            <div className="absolute left-0 top-0 z-10 h-full w-24 bg-gradient-to-r from-card to-transparent"></div>
-            <div className="absolute right-0 top-0 z-10 h-full w-24 bg-gradient-to-l from-card to-transparent"></div>
+            <div className="absolute left-0 top-0 z-10 h-full w-24 bg-gradient-to-r from-white to-transparent"></div>
+            <div className="absolute right-0 top-0 z-10 h-full w-24 bg-gradient-to-l from-white to-transparent"></div>
             <LogoScroller logos={hospitalLogos} direction="left" />
             <LogoScroller
               logos={[...hospitalLogos].reverse()}
