@@ -73,8 +73,8 @@ const LogoScroller = ({ logos, direction = 'left' } : { logos: typeof hospitalLo
                 }}
             >
                 {duplicatedLogos.map((logo, index) => (
-                    <div key={index} className="flex-shrink-0 w-48 p-4">
-                        <div className="flex flex-col items-center justify-center gap-2 rounded-lg bg-muted p-6 h-32">
+                    <div key={index} className="flex-shrink-0 w-48 px-4">
+                        <div className="flex flex-col items-center justify-center gap-2 rounded-lg bg-muted p-6">
                         {logo.icon}
                         <p className="text-xs text-center font-medium text-muted-foreground">{logo.name}</p>
                         </div>
