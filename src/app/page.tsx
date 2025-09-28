@@ -8,6 +8,11 @@ import {
   QrCode,
   Bell,
   Stethoscope,
+  XCircle,
+  CheckCircle2,
+  Database,
+  ShieldCheck,
+  Search,
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -18,6 +23,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { PlayCircle } from 'lucide-react';
 
 const features = [
@@ -269,6 +275,130 @@ export default function Home() {
               </Card>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="w-full bg-white py-12 md:py-20 lg:py-24">
+        <div className="container mx-auto">
+          <Tabs defaultValue="without" className="w-full">
+            <TabsList className="mx-auto grid w-full max-w-md grid-cols-2">
+              <TabsTrigger value="with">Dengan MediPass</TabsTrigger>
+              <TabsTrigger value="without">Tanpa MediPass</TabsTrigger>
+            </TabsList>
+            <TabsContent value="without" className="mt-10">
+              <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
+                <div className="order-2 md:order-1">
+                  <h3 className="mb-6 font-headline text-3xl font-bold">
+                    Data Tercecer dan Sulit Diakses
+                  </h3>
+                  <ul className="space-y-6">
+                    <li className="flex items-start gap-4">
+                      <XCircle className="mt-1 h-6 w-6 flex-shrink-0 text-destructive" />
+                      <div>
+                        <h4 className="font-semibold">Dokumen yang tercecer</h4>
+                        <p className="text-muted-foreground">
+                          Administrasi menjadi lambat karena harus mencari-cari
+                          dokumen fisik. Data juga rentan hilang atau rusak.
+                        </p>
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-4">
+                      <XCircle className="mt-1 h-6 w-6 flex-shrink-0 text-destructive" />
+                      <div>
+                        <h4 className="font-semibold">
+                          Informasi tersebar
+                        </h4>
+                        <p className="text-muted-foreground">
+                          Riwayat medis tersebar di berbagai rumah sakit dan
+                          sulit untuk digabungkan menjadi satu pandangan utuh.
+                        </p>
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-4">
+                      <XCircle className="mt-1 h-6 w-6 flex-shrink-0 text-destructive" />
+                      <div>
+                        <h4 className="font-semibold">
+                          Risiko keamanan dan privasi
+                        </h4>
+                        <p className="text-muted-foreground">
+                          Penyimpanan data konvensional memiliki risiko
+                          pencurian, korupsi, dan kehilangan data yang tinggi.
+                        </p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div className="order-1 md:order-2">
+                  <Image
+                    src="https://picsum.photos/seed/problem/600/400"
+                    alt="Ilustrasi masalah data medis yang tercecer"
+                    width={600}
+                    height={400}
+                    data-ai-hint="confused person cluttered desk"
+                    className="mx-auto rounded-lg"
+                  />
+                </div>
+              </div>
+            </TabsContent>
+            <TabsContent value="with" className="mt-10">
+              <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
+                 <div className="">
+                  <Image
+                    src="https://picsum.photos/seed/solution/600/400"
+                    alt="Ilustrasi data medis yang terorganisir dengan MediPass"
+                    width={600}
+                    height={400}
+                    data-ai-hint="organized data digital health"
+                    className="mx-auto rounded-lg"
+                  />
+                </div>
+                <div className="">
+                  <h3 className="mb-6 font-headline text-3xl font-bold">
+                    Data Terpusat dan Mudah Diakses
+                  </h3>
+                  <ul className="space-y-6">
+                    <li className="flex items-start gap-4">
+                      <CheckCircle2 className="mt-1 h-6 w-6 flex-shrink-0 text-green-500" />
+                      <div>
+                        <h4 className="font-semibold">
+                          Resume Medis Terpusat
+                        </h4>
+                        <p className="text-muted-foreground">
+                          Semua riwayat medis Anda, dari alergi hingga riwayat
+                          konsultasi, terkumpul dalam satu platform digital.
+                        </p>
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-4">
+                      <CheckCircle2 className="mt-1 h-6 w-6 flex-shrink-0 text-green-500" />
+                      <div>
+                        <h4 className="font-semibold">
+                          Akses Cepat dengan QR Code
+                        </h4>
+                        <p className="text-muted-foreground">
+                          Petugas medis dapat mengakses data Anda dengan cepat
+                          dan aman hanya dengan memindai QR code, vital dalam
+                          keadaan darurat.
+                        </p>
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-4">
+                      <CheckCircle2 className="mt-1 h-6 w-6 flex-shrink-0 text-green-500" />
+                      <div>
+                        <h4 className="font-semibold">
+                          Keamanan Data Terjamin
+                        </h4>
+                        <p className="text-muted-foreground">
+                          Dibangun dengan standar keamanan modern untuk
+                          memastikan data medis Anda selalu aman dan privat.
+                        </p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </TabsContent>
+          </Tabs>
         </div>
       </section>
     </div>
