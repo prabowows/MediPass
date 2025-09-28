@@ -145,6 +145,14 @@ const testimonials = [
     quote:
       '“Managing my elderly father\'s health was a constant challenge, with records scattered across multiple clinics. MediPass consolidated everything into one place. The AI notifications for medication reminders and relevant health tips are invaluable. It has truly empowered me as a caregiver.”',
   },
+  {
+    name: 'Maria G.',
+    title: 'Hospital Administrator',
+    avatar: 'https://picsum.photos/seed/admin-1/200/200',
+    avatarHint: 'woman administrator',
+    quote:
+      '“Integrating MediPass into our workflow has been seamless. The QR code system dramatically reduces patient check-in times and minimizes administrative errors. Our staff can access vital information instantly, leading to more efficient and safer patient care. It’s a win-win for both the hospital and our patients.”',
+  },
 ];
 
 const LogoScroller = ({
