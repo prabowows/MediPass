@@ -80,12 +80,7 @@ const Header = () => {
         <div className="flex flex-1 items-center justify-end space-x-4">
           {!isLoggedIn ? (
             <>
-              <Button asChild variant="ghost">
-                <Link href="/login">Login</Link>
-              </Button>
-              <Button asChild>
-                <Link href="/register">Register</Link>
-              </Button>
+              {/* Login and Register buttons removed as they are on the main page hero */}
             </>
           ) : (
              <div className="flex items-center gap-4">
