@@ -13,6 +13,7 @@ import {
   Database,
   ShieldCheck,
   Search,
+  LogIn,
 } from 'lucide-react';
 import React from 'react';
 import Autoplay from 'embla-carousel-autoplay';
@@ -219,16 +220,23 @@ export default function Home() {
                 digital passport.
               </p>
             </div>
-            <div className="flex flex-col gap-4 min-[400px]:flex-row">
+            <div className="flex flex-col items-start gap-4">
               <Button asChild size="lg">
                 <Link href="/register">
-                  Register as a Patient
+                  Get Started
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
-              <Button asChild variant="secondary" size="lg">
-                <Link href="/login">Hospital Portal</Link>
-              </Button>
+              <p className="text-sm text-muted-foreground">
+                Already have an account?{' '}
+                <Link
+                  href="/login"
+                  className="inline-flex items-center font-semibold text-primary underline-offset-4 hover:underline"
+                >
+                  Sign In
+                  <LogIn className="ml-1 h-4 w-4" />
+                </Link>
+              </p>
             </div>
           </div>
           <div className="relative flex w-full items-center justify-center">
