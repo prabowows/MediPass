@@ -23,6 +23,7 @@ import {
 import {
   Dialog,
   DialogContent,
+  DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
 
@@ -113,6 +114,7 @@ export default function Home() {
                 </div>
               </DialogTrigger>
               <DialogContent className="max-w-3xl p-0">
+                <DialogTitle className="sr-only">MediPass Promotional Video</DialogTitle>
                 <div className="aspect-video">
                   <iframe
                     className="h-full w-full"
