@@ -54,36 +54,76 @@ const features = [
 ];
 
 const hospitalLogos = [
-  { name: 'Global Health', icon: <Stethoscope className="h-10 w-10" /> },
-  { name: 'Evergreen Hospital', icon: <BriefcaseMedical className="h-10 w-10" /> },
-  { name: 'City Central', icon: <Hospital className="h-10 w-10" /> },
-  { name: 'Wellness Clinic', icon: <HeartPulse className="h-10 w-10" /> },
-  { name: 'Innovate Labs', icon: <FlaskConical className="h-10 w-10" /> },
+  {
+    name: 'RS JIH Solo',
+    image:
+      'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi_gL0WBD--GHwPXXmDE87wbbAPrj5hTxwp_9SNWT4mCyv5eTd2JXh-Ond5GH3fFidBWU9q3Y7ICJ3vnvBlZA_ficXySGbcXImHdfPAvdK9bupLg6nO0oYrEDen_8-6s4N75PJxJost4ddT0RJYQ3fYEvOZNnLtdM0F6uWSteT4bXbNWXz0NgZNPAXq/s1692/rs%20jih%20solo.jpg',
+  },
+  {
+    name: 'RS Kasih Ibu',
+    image:
+      'https://img.idxchannel.com/media/700/images/idx/2023/08/18/IMG-20230818-WA0030.jpg',
+  },
+  {
+    name: 'RS PKU Muhammadiyah',
+    image:
+      'https://static.wikia.nocookie.net/logopedia/images/b/b6/Rumah_Sakit_PKU_Muhammadiyah_Bantul.png/revision/latest?cb=20191009161639',
+  },
+  {
+    name: 'Mayapada Hospital',
+    image:
+      'https://images.seeklogo.com/logo-png/36/1/rs-mayapada-logo-png_seeklogo-369059.png',
+  },
+  {
+    name: 'Siloam Hospitals',
+    image:
+      'https://upload.wikimedia.org/wikipedia/commons/5/5e/Siloam_Hospitals.svg',
+  },
   { name: 'General United', icon: <Stethoscope className="h-10 w-10" /> },
 ];
 
-const LogoScroller = ({ logos, direction = 'left' } : { logos: typeof hospitalLogos, direction?: 'left' | 'right' }) => {
-    const duplicatedLogos = [...logos, ...logos];
-    return (
-        <div className="w-full overflow-hidden">
-            <div 
-                className="flex animate-scroll"
-                style={{
-                    animationDirection: direction === 'left' ? 'normal' : 'reverse',
-                }}
-            >
-                {duplicatedLogos.map((logo, index) => (
-                    <div key={index} className="flex-shrink-0 w-48 px-4">
-                        <div className="flex flex-col items-center justify-center gap-2 rounded-lg bg-muted p-6">
-                        {logo.icon}
-                        <p className="text-xs text-center font-medium text-muted-foreground">{logo.name}</p>
-                        </div>
-                    </div>
-                ))}
+const LogoScroller = ({
+  logos,
+  direction = 'left',
+}: {
+  logos: (typeof hospitalLogos);
+  direction?: 'left' | 'right';
+}) => {
+  const duplicatedLogos = [...logos, ...logos];
+  return (
+    <div className="w-full overflow-hidden">
+      <div
+        className="flex animate-scroll"
+        style={{
+          animationDirection: direction === 'left' ? 'normal' : 'reverse',
+        }}
+      >
+        {duplicatedLogos.map((logo, index) => (
+          <div key={index} className="w-48 flex-shrink-0 px-4">
+            <div className="flex h-24 items-center justify-center rounded-lg bg-muted p-4">
+              {logo.image ? (
+                <Image
+                  src={logo.image}
+                  alt={logo.name}
+                  width={120}
+                  height={60}
+                  className="h-full w-auto object-contain"
+                />
+              ) : (
+                <div className="flex flex-col items-center gap-2">
+                  {logo.icon}
+                  <p className="text-center text-xs font-medium text-muted-foreground">
+                    {logo.name}
+                  </p>
+                </div>
+              )}
             </div>
-        </div>
-    )
-}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export default function Home() {
   return (
@@ -98,7 +138,9 @@ export default function Home() {
                 Smart, Simple & Secure.
               </h1>
               <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                MediPass intelligently organizes your complete medical records and provides personalized AI insights, all in a single, secure digital passport.
+                MediPass intelligently organizes your complete medical records
+                and provides personalized AI insights, all in a single, secure
+                digital passport.
               </p>
             </div>
             <div className="flex flex-col gap-4 min-[400px]:flex-row">
@@ -113,7 +155,7 @@ export default function Home() {
               </Button>
             </div>
           </div>
-           <div className="relative flex w-full items-center justify-center">
+          <div className="relative flex w-full items-center justify-center">
             <Dialog>
               <DialogTrigger asChild>
                 <div className="group relative w-full max-w-lg cursor-pointer overflow-hidden rounded-xl">
@@ -132,7 +174,9 @@ export default function Home() {
                 </div>
               </DialogTrigger>
               <DialogContent className="max-w-3xl p-0">
-                <DialogTitle className="sr-only">MediPass Promotional Video</DialogTitle>
+                <DialogTitle className="sr-only">
+                  MediPass Promotional Video
+                </DialogTitle>
                 <div className="aspect-video">
                   <iframe
                     className="h-full w-full"
@@ -151,16 +195,19 @@ export default function Home() {
 
       <section className="w-full bg-background py-12 md:py-16">
         <div className="container mx-auto">
-          <div className="text-center mb-8">
+          <div className="mb-8 text-center">
             <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
               Trusted by Leading Healthcare Providers
             </h3>
           </div>
           <div className="relative flex flex-col overflow-hidden">
-             <div className="absolute top-0 left-0 w-24 h-full bg-gradient-to-r from-background to-transparent z-10"></div>
-             <div className="absolute top-0 right-0 w-24 h-full bg-gradient-to-l from-background to-transparent z-10"></div>
+            <div className="absolute left-0 top-0 z-10 h-full w-24 bg-gradient-to-r from-background to-transparent"></div>
+            <div className="absolute right-0 top-0 z-10 h-full w-24 bg-gradient-to-l from-background to-transparent"></div>
             <LogoScroller logos={hospitalLogos} direction="left" />
-            <LogoScroller logos={[...hospitalLogos].reverse()} direction="right" />
+            <LogoScroller
+              logos={[...hospitalLogos].reverse()}
+              direction="right"
+            />
           </div>
         </div>
       </section>
@@ -174,7 +221,8 @@ export default function Home() {
               </h2>
               <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                 MediPass empowers both patients and healthcare providers with
-                cutting-edge features designed for efficiency and peace of mind.
+                cutting-edge features designed for efficiency and peace of
+                mind.
               </p>
             </div>
           </div>

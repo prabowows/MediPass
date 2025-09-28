@@ -34,6 +34,26 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+       {
+        protocol: 'https',
+        hostname: 'blogger.googleusercontent.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'img.idxchannel.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'static.wikia.nocookie.net',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.seeklogo.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'upload.wikimedia.org',
+      },
     ],
   },
 };
