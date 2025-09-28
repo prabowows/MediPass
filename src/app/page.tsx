@@ -10,6 +10,7 @@ import {
   Stethoscope,
   BriefcaseMedical,
   FlaskConical,
+  PlayCircle,
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -18,10 +19,12 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from '@/components/ui/carousel';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from '@/components/ui/dialog';
 
 const features = [
   {
@@ -53,10 +56,6 @@ const features = [
     imageId: 'feature-4',
   },
 ];
-
-const featureImages = PlaceHolderImages.filter(img =>
-  img.id.startsWith('feature-')
-);
 
 const hospitalLogos = [
   { name: 'Global Health', icon: <Stethoscope className="h-10 w-10" /> },
@@ -95,31 +94,37 @@ export default function Home() {
               </Button>
             </div>
           </div>
-          <div className="relative flex w-full items-center justify-center px-12">
-            <Carousel
-              className="w-full max-w-lg"
-              opts={{ loop: true }}
-              data-ai-hint="image carousel"
-            >
-              <CarouselContent>
-                {featureImages.map((image) => (
-                  <CarouselItem key={image.id}>
-                    <div className="aspect-video overflow-hidden rounded-xl">
-                      <Image
-                        src={image.imageUrl}
-                        alt={image.description}
-                        width={600}
-                        height={400}
-                        data-ai-hint={image.imageHint}
-                        className="h-full w-full object-cover"
-                      />
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="left-0" />
-              <CarouselNext className="right-0" />
-            </Carousel>
+           <div className="relative flex w-full items-center justify-center">
+            <Dialog>
+              <DialogTrigger asChild>
+                <div className="group relative w-full max-w-lg cursor-pointer overflow-hidden rounded-xl">
+                  <Image
+                    src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxoZWFsdGhjYXJlJTIwdGVjaG5vbG9neXxlbnwwfHx8fDE3NTg4NjU0NjB8MA&ixlib=rb-4.1.0&q=80&w=1080"
+                    alt="Promotional video about MediPass"
+                    width={600}
+                    height={400}
+                    data-ai-hint="healthcare technology"
+                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/40" />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <PlayCircle className="h-20 w-20 text-white/80 transition-all group-hover:scale-110 group-hover:text-white" />
+                  </div>
+                </div>
+              </DialogTrigger>
+              <DialogContent className="max-w-3xl p-0">
+                <div className="aspect-video">
+                  <iframe
+                    className="h-full w-full"
+                    src="https://www.youtube.com/embed/L2r9V5agS_M?autoplay=1"
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
       </section>
