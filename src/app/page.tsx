@@ -400,7 +400,7 @@ export default function Home() {
                  <div className="">
                   <Card className="overflow-hidden shadow-lg">
                     <Image
-                      src="https://i.ibb.co/Lz3nnZC/2f3a4a99-d4c0-4605-ab32-af65e48e5c6b.jpg"
+                      src="https://gcdnb.pbrd.co/images/atESRyGJUcWp.jpg?o=1"
                       alt="Illustration of organized medical data with MediPass"
                       width={600}
                       height={400}
