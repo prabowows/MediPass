@@ -247,7 +247,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="mx-auto grid items-start gap-8 sm:max-w-4xl sm:grid-cols-2 md:gap-12 lg:max-w-5xl lg:grid-cols-2">
+          <div className="mx-auto grid items-start gap-8 sm:grid-cols-2 md:gap-12 lg:max-w-none lg:grid-cols-4">
             {features.map((feature) => (
               <Card
                 key={feature.title}
