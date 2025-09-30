@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -66,11 +67,17 @@ const Header = () => {
       );
 
     });
+    
+  const getLogoHref = () => {
+    if (!isLoggedIn) return '/';
+    return userType === 'Patient' ? '/patient/dashboard' : '/hospital/dashboard';
+  };
+
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
-        <Link href="/" className="mr-8 flex items-center space-x-2">
+        <Link href={getLogoHref()} className="mr-8 flex items-center space-x-2">
           <Logo className="h-6 w-6 text-primary" />
           <span className="font-headline font-bold">MediPass</span>
         </Link>
@@ -126,3 +133,5 @@ const Header = () => {
 };
 
 export default Header;
+
+    

@@ -1,4 +1,5 @@
 
+
 'use client';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -18,8 +19,9 @@ import {
   LightbulbOff,
   BrainCircuit
 } from 'lucide-react';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Autoplay from 'embla-carousel-autoplay';
+import { useRouter } from 'next/navigation';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -39,6 +41,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { PlayCircle } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { useAuth } from '@/contexts/auth-context';
 
 const features = [
   {
@@ -205,6 +208,24 @@ export default function Home() {
   const plugin = React.useRef(
     Autoplay({ delay: 5000, stopOnInteraction: true })
   );
+  const { isLoggedIn, userType, isLoading } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!isLoading && isLoggedIn) {
+      if (userType === 'Patient') {
+        router.replace('/patient/dashboard');
+      } else if (userType === 'Hospital') {
+        router.replace('/hospital/dashboard');
+      }
+    }
+  }, [isLoggedIn, userType, isLoading, router]);
+
+  if (isLoading || isLoggedIn) {
+    // You can return a loading spinner here while the redirect is happening
+    return null; 
+  }
+
 
   return (
     <div className="flex flex-col">
@@ -508,6 +529,8 @@ export default function Home() {
 }
 
     
+    
+
     
 
     

@@ -1,3 +1,4 @@
+
 'use client';
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
@@ -8,6 +9,7 @@ type UserType = 'Patient' | 'Hospital' | null;
 interface AuthContextType {
   isLoggedIn: boolean;
   userType: UserType;
+  isLoading: boolean;
   login: (userType: UserType, path: string) => Promise<void>;
   logout: () => void;
 }
@@ -21,15 +23,21 @@ const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userType, setUserType] = useState<UserType>(null);
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
-    const loggedInStatus = localStorage.getItem('isLoggedIn') === 'true';
-    const storedUserType = localStorage.getItem('userType') as UserType;
-    setIsLoggedIn(loggedInStatus);
-    setUserType(storedUserType);
-    setLoading(false);
+    try {
+      const loggedInStatus = localStorage.getItem('isLoggedIn') === 'true';
+      const storedUserType = localStorage.getItem('userType') as UserType;
+      setIsLoggedIn(loggedInStatus);
+      setUserType(storedUserType);
+    } catch (error) {
+      // localStorage is not available (e.g., in server-side rendering or private browsing)
+      console.warn("Could not access localStorage. Auth state will not be persisted.");
+    } finally {
+      setIsLoading(false);
+    }
   }, []);
 
   const login = async (userType: UserType, path: string) => {
@@ -51,12 +59,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     router.push('/');
   };
 
-  if (loading) {
-    return null; // or a loading spinner
-  }
-
   return (
-    <AuthContext.Provider value={{ isLoggedIn, userType, login, logout }}>
+    <AuthContext.Provider value={{ isLoggedIn, userType, isLoading, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
@@ -69,3 +73,5 @@ export function useAuth() {
   }
   return context;
 }
+
+    
