@@ -1,11 +1,5 @@
 'use client';
 
-import { personalizedNotifications } from '@/ai/flows/personalized-notifications';
-import {
-  patientMedicalHistory,
-  hospitalPromotions,
-  medicationUpdates,
-} from '@/lib/data';
 import {
   Accordion,
   AccordionContent,
@@ -14,38 +8,19 @@ import {
 } from '@/components/ui/accordion';
 import { BrainCircuit, Info } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
-import { useEffect, useState } from 'react';
 import type { PersonalizedNotificationsOutput } from '@/ai/flows/personalized-notifications';
 
 const PersonalizedNotifications = () => {
-  const [notifications, setNotifications] =
-    useState<PersonalizedNotificationsOutput | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchNotifications = async () => {
-      setIsLoading(true);
-      try {
-        const result = await personalizedNotifications({
-          patientMedicalHistory,
-          hospitalPromotions,
-          medicationUpdates,
-        });
-        setNotifications(result);
-      } catch (error) {
-        console.error('Failed to fetch personalized notifications:', error);
-        // Optionally, set an error state to show in the UI
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchNotifications();
-  }, []);
-
-  if (isLoading) {
-    return <PersonalizedNotificationsSkeleton />;
-  }
+  const notifications: PersonalizedNotificationsOutput | null = {
+    relevantNotifications: `You have several important notifications. For promotions, consider taking advantage of a 20% discount on comprehensive heart check-up packages, as you have a history of hypertension. There is also a special package for diabetes management and consultation, including a free glucose meter, which is highly relevant to your Type 2 Diabetes. Additionally, you may be interested in 50% off on allergy testing panels due to your listed allergies. Regarding medication updates, please check your batch number for a BrandX Lisinopril recall notice, as you are prescribed Lisinopril. A new study suggests a link between long-term Metformin use and Vitamin B12 deficiency, which you should discuss with your doctor. Finally, a generic version of a popular cholesterol medication, similar to your Atorvastatin, is now available at a lower price.`,
+    reasoning: `The notifications were selected based on your specific health profile:
+- The heart check-up promotion is relevant due to your diagnosis of Hypertension.
+- The diabetes package is directly applicable to your Type 2 Diabetes condition.
+- The allergy testing discount is suggested because you have multiple listed allergies.
+- The Lisinopril recall is critical as it's a medication you are currently taking.
+- The Metformin-B12 deficiency link is important for your long-term health management.
+- The generic medication update could offer cost savings on your cholesterol treatment.`
+  };
 
   if (!notifications) {
     return (
@@ -103,7 +78,7 @@ const PersonalizedNotifications = () => {
           </AccordionItem>
           <AccordionItem value="item-2" className="border-b-0 border-white/30">
             <AccordionTrigger className="text-base font-semibold text-white hover:no-underline">
-              Analyst&apos;s Reasoning
+              Analyst's Reasoning
             </AccordionTrigger>
             <AccordionContent>
               <p className="whitespace-pre-line text-sm text-white/80">
