@@ -1,7 +1,7 @@
 
 'use client';
 
-import React, { useState, Suspense } from 'react';
+import React, { useState, Suspense, useEffect } from 'react';
 import type { Patient } from '@/lib/data';
 import {
   Card,
@@ -37,6 +37,12 @@ const InfoField = ({ label, value }: { label: string | undefined; value: string 
 
 const MedicalResume = ({ patient }: { patient: Patient }) => {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
 
   return (
     <div className="space-y-6">
@@ -75,8 +81,17 @@ const MedicalResume = ({ patient }: { patient: Patient }) => {
           <CardDescription>A calendar view of your past surgeries and vaccinations. Click a date for details.</CardDescription>
         </CardHeader>
         <CardContent className="grid grid-cols-1 gap-8 md:grid-cols-2">
-            <MedicalCalendar patient={patient} selectedDate={selectedDate} onDateSelect={setSelectedDate} />
-            <MedicalEventDetails patient={patient} selectedDate={selectedDate} />
+          {isClient ? (
+            <>
+              <MedicalCalendar patient={patient} selectedDate={selectedDate} onDateSelect={setSelectedDate} />
+              <MedicalEventDetails patient={patient} selectedDate={selectedDate} />
+            </>
+          ) : (
+             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+                  <div className="rounded-md border w-full h-[370px] bg-muted animate-pulse"></div>
+                  <div className="rounded-md border h-[370px] bg-muted animate-pulse"></div>
+              </div>
+          )}
         </CardContent>
       </Card>
 
