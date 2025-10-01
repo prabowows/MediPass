@@ -11,6 +11,9 @@ const B2B2CDiagram = ({ className, ...props }: React.SVGProps<SVGSVGElement>) =>
         <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
             <path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(var(--foreground))" />
         </marker>
+        <marker id="arrow-primary" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(var(--primary))" />
+        </marker>
         <style>
             {`
                 .label { font-size: 16px; font-weight: 600; fill: hsl(var(--foreground)); }
@@ -30,7 +33,7 @@ const B2B2CDiagram = ({ className, ...props }: React.SVGProps<SVGSVGElement>) =>
     </g>
 
     {/* Hospital Box */}
-    <g transform="translate(50, 160)">
+    <g transform="translate(50, 200)">
       <rect width="200" height="100" fill="hsl(var(--card))" className="box" />
       <text x="100" y="35" textAnchor="middle" className="label">Rumah Sakit</text>
       <text x="100" y="55" textAnchor="middle" className="desc">(Business Customer)</text>
@@ -38,7 +41,7 @@ const B2B2CDiagram = ({ className, ...props }: React.SVGProps<SVGSVGElement>) =>
     </g>
 
     {/* Patient Box */}
-    <g transform="translate(550, 160)">
+    <g transform="translate(550, 200)">
       <rect width="200" height="100" fill="hsl(var(--card))" className="box" />
       <text x="100" y="35" textAnchor="middle" className="label">Pasien</text>
       <text x="100" y="55" textAnchor="middle" className="desc">(End Consumer)</text>
@@ -46,26 +49,28 @@ const B2B2CDiagram = ({ className, ...props }: React.SVGProps<SVGSVGElement>) =>
     </g>
 
     {/* Arrows and Text */}
-    {/* B2B: MediPass -> Hospital */}
+    {/* 1. B2B: MediPass -> Hospital */}
     <g>
-        <path d="M 325 55 Q 275 80, 250 160" stroke="hsl(var(--foreground))" strokeWidth="1.5" fill="none" markerEnd="url(#arrow)" />
-        <text x="250" y="100" textAnchor="middle" className="label" fontSize="12">1. Jual Lisensi (B2B)</text>
-    </g>
-    <g>
-        <path d="M 250 260 Q 275 300, 325 210" stroke="hsl(var(--foreground))" strokeWidth="1.5" fill="none" markerEnd="url(#arrow)" />
-        <text x="250" y="285" textAnchor="middle" className="label" fontSize="12">Membayar</text>
-    </g>
-
-    {/* B2C: Hospital -> Patient */}
-    <g>
-        <path d="M 250 210 H 550" className="dashed-line" />
-        <text x="400" y="200" textAnchor="middle" className="label" fontSize="12" fill="hsl(var(--muted-foreground))">2. Rumah Sakit Mengajak Pasien</text>
+        <path d="M 360 90 Q 300 150, 200 190" stroke="hsl(var(--foreground))" strokeWidth="1.5" fill="none" markerEnd="url(#arrow)" />
+        <text x="270" y="130" textAnchor="middle" className="label" fontSize="14">1. Jual Lisensi (B2B)</text>
     </g>
     
-    {/* Value Exchange: Patient -> Hospital */}
+    {/* Membayar: Hospital -> MediPass */}
+    <g>
+        <path d="M 200 310 Q 280 370, 360 200" stroke="hsl(var(--foreground))" strokeWidth="1.5" fill="none" markerEnd="url(#arrow)" />
+        <text x="230" y="345" textAnchor="middle" className="label" fontSize="14">Membayar</text>
+    </g>
+
+    {/* 2. B2C: Hospital -> Patient */}
+    <g>
+        <path d="M 260 250 H 540" className="dashed-line" />
+        <text x="400" y="240" textAnchor="middle" className="label" fontSize="14" fill="hsl(var(--muted-foreground))">2. Rumah Sakit Mengajak Pasien</text>
+    </g>
+    
+    {/* 3. Value Exchange: Patient -> Hospital */}
      <g>
-        <path d="M 550 210 Q 400 300, 250 210" stroke="hsl(var(--primary))" strokeWidth="2" fill="none" markerEnd="url(#arrow)" />
-        <text x="400" y="260" textAnchor="middle" className="label" fill="hsl(var(--primary))" fontSize="14">3. Pertukaran Data via QR Code</text>
+        <path d="M 540 260 Q 400 330, 260 260" stroke="hsl(var(--primary))" strokeWidth="2" fill="none" markerEnd="url(#arrow-primary)" />
+        <text x="400" y="310" textAnchor="middle" className="label" fill="hsl(var(--primary))" fontSize="14">3. Pertukaran Data via QR Code</text>
     </g>
 
   </svg>
