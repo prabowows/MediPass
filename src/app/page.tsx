@@ -42,6 +42,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { PlayCircle } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { useAuth } from '@/contexts/auth-context';
+import B2B2CDiagram from '@/components/icons/b2b2c-diagram';
 
 const features = [
   {
@@ -123,7 +124,7 @@ const hospitalLogos = [
   {
     name: 'RS Surya Insani',
     image:
-      'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh7zKOI2KnBdoPzuG4hRfHFdGvlUSU6BqlIhOvLsmbxxjbVzmMlxsuZwAE7ebGXcklhCtKmz8vK2AInXOxhc7HT4gmj2KXJGtBPe3M6Gf4fpKqeq2R14k-htbqykVVQVpopOK6OjM7KTpYuyH9XPDtagexPbtdYc7XQsUocUt1DLRLpj0xYAOsoJEXI/w420-h280-p-k-no-nu/rs%20surya%20insani.jpg',
+      'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh7zKOI2KnBdoPzuG4hRfHFdGvlUSU6BqlIhOvLsmbxxjbVzmMlxsuZwAE7ebGXcklhCtKmz8vK2AInXOxhc7HT4gmj2KXJGtBPe3M6Gf4fpKqeq2R14k-htbqykVVQVpopOK6OjM7KTpYuyH9XPDtagexPbtdYc7XQsUocUt1DLRLpj0xYAOsoJEXI/w420-h280-p-k-no-nu/rs%2sin surya%20insani.jpg',
   },
 ];
 
@@ -354,6 +355,22 @@ export default function Home() {
           </div>
         </div>
       </section>
+      
+      <section className="w-full bg-background py-12 md:py-20 lg:py-24">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="mb-12 text-center">
+            <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl">
+              Our Business Model: B2B2C
+            </h2>
+            <p className="mt-3 max-w-3xl mx-auto text-muted-foreground md:text-lg">
+              We partner with hospitals (Business) to provide our platform, which then empowers their patients (Consumer). It's a win-win-win.
+            </p>
+          </div>
+          <div className="flex justify-center">
+            <B2B2CDiagram className="w-full max-w-4xl h-auto" />
+          </div>
+        </div>
+      </section>
 
       <section className="w-full bg-white pb-12 md:pb-20 lg:pb-24">
         <div className="container mx-auto">
@@ -418,19 +435,7 @@ export default function Home() {
             </TabsContent>
             <TabsContent value="with" className="mt-10">
               <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
-                <div className="[perspective:1000px] group">
-                  <Card className="overflow-hidden shadow-lg animate-rotate-y-3d">
-                    <Image
-                      src="https://gcdnb.pbrd.co/images/atESRyGJUcWp.jpg?o=1"
-                      alt="Illustration of organized medical data with MediPass"
-                      width={600}
-                      height={400}
-                      data-ai-hint="organized data digital health"
-                      className="mx-auto"
-                    />
-                  </Card>
-                </div>
-                <div>
+                <div className="order-1 md:order-2">
                   <h3 className="mb-6 font-headline text-3xl font-bold">
                     Centralized Data, Easy Access
                   </h3>
@@ -469,6 +474,18 @@ export default function Home() {
                       </div>
                     </li>
                   </ul>
+                </div>
+                <div className="[perspective:1000px] group order-2 md:order-1">
+                  <Card className="overflow-hidden shadow-lg animate-rotate-y-3d">
+                    <Image
+                      src="https://gcdnb.pbrd.co/images/atESRyGJUcWp.jpg?o=1"
+                      alt="Illustration of organized medical data with MediPass"
+                      width={600}
+                      height={400}
+                      data-ai-hint="organized data digital health"
+                      className="mx-auto"
+                    />
+                  </Card>
                 </div>
               </div>
             </TabsContent>
@@ -527,12 +544,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
-    
-
-    
-
-    
-
-    
