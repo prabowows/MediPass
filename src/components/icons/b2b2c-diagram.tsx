@@ -56,9 +56,9 @@ const B2B2CDiagram = ({ className, ...props }: React.SVGProps<SVGSVGElement>) =>
     </g>
     
     {/* Membayar: Hospital -> MediPass */}
-    <g>
-        <path d="M 200 310 Q 280 370, 360 200" stroke="hsl(var(--foreground))" strokeWidth="1.5" fill="none" markerEnd="url(#arrow)" />
-        <text x="230" y="345" textAnchor="middle" className="label" fontSize="14">Membayar</text>
+     <g>
+        <path d="M 250 195 Q 310 130, 390 100" stroke="hsl(var(--foreground))" strokeWidth="1.5" fill="none" markerEnd="url(#arrow)" />
+        <text x="320" y="145" textAnchor="middle" className="label" fontSize="14" transform="rotate(-15 320 145)">Membayar</text>
     </g>
 
     {/* 2. B2C: Hospital -> Patient */}
